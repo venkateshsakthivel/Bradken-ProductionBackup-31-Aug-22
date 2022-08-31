@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CUSTOMER_PRODUCT_EASTERN_CANADA</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Product__c</columns>
+    <columns>Customer_Product_Description__c</columns>
+    <columns>Account__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>ARCELORMITTAL</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>AGNICO</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>MALARTIC</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>TACORA</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>RAGLAN</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>HORNE</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>MATAGAMI</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>VOISEY</value>
+    </filters>
+    <label>CUSTOMER PRODUCT EASTERN CANADA</label>
+</ListView>

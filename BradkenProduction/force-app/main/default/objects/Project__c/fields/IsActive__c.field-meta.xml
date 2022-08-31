@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsActive__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>If the Project is active, it can be selected when creating an Opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is the Project active?</inlineHelpText>
+    <label>Active</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

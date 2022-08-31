@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Targets</fullName>
+    <active>true</active>
+    <description>Target Record Type</description>
+    <label>Targets</label>
+</RecordType>

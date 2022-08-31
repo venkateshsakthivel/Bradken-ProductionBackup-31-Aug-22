@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salesforce_CRM_Pending_Deployment_Ticket</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Priority_Flag__c</columns>
+    <columns>Currently_With__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Pending Deployment</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Support_Register__c.Salesforce_CRM</value>
+    </filters>
+    <label>Salesforce CRM Pending Deployment Ticket</label>
+</ListView>

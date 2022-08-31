@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mio_s_open_invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>Status__c</columns>
+    <columns>TotalOutstandingAmount__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Invoice__c.Invoice</value>
+    </filters>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Mio Savic</value>
+    </filters>
+    <label>Mio&apos;s open invoices</label>
+</ListView>

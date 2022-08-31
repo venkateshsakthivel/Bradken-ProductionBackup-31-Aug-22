@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Group__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Product Group</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Balls &amp; Rings, Industrial and Rail Products</fullName>
+                <default>true</default>
+                <label>Balls &amp; Rings, Industrial and Rail Products</label>
+            </value>
+            <value>
+                <fullName>Crawler Systems</fullName>
+                <default>false</default>
+                <label>Crawler Systems</label>
+            </value>
+            <value>
+                <fullName>Crusher Liners, Steel Liners</fullName>
+                <default>false</default>
+                <label>Crusher Liners, Steel Liners</label>
+            </value>
+            <value>
+                <fullName>Fixed Plant Liners</fullName>
+                <default>false</default>
+                <label>Fixed Plant Liners</label>
+            </value>
+            <value>
+                <fullName>GET</fullName>
+                <default>false</default>
+                <label>GET</label>
+            </value>
+            <value>
+                <fullName>Mining Buckets</fullName>
+                <default>false</default>
+                <label>Mining Buckets</label>
+            </value>
+            <value>
+                <fullName>Other MinPro</fullName>
+                <default>false</default>
+                <label>Other MinPro</label>
+            </value>
+            <value>
+                <fullName>Sugar</fullName>
+                <default>false</default>
+                <label>Sugar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

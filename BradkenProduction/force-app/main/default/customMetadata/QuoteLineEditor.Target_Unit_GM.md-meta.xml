@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Target Unit GM %</label>
+    <protected>false</protected>
+    <values>
+        <field>ColumName__c</field>
+        <value xsi:type="xsd:string">Target_Unit_GM</value>
+    </values>
+    <values>
+        <field>DataType__c</field>
+        <value xsi:type="xsd:string">number</value>
+    </values>
+    <values>
+        <field>DefaultChecked__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Display__c</field>
+        <value xsi:type="xsd:string">Hidden</value>
+    </values>
+    <values>
+        <field>Editable_After_Status__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FieldAPI__c</field>
+        <value xsi:type="xsd:string">Target_Gross_Margin__c</value>
+    </values>
+    <values>
+        <field>SortOrder__c</field>
+        <value xsi:type="xsd:double">80.95</value>
+    </values>
+    <values>
+        <field>helpText__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

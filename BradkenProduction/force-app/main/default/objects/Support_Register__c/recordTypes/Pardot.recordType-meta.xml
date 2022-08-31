@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pardot</fullName>
+    <active>true</active>
+    <description>Pardot &amp; other marketing related tickets</description>
+    <label>Pardot</label>
+    <picklistValues>
+        <picklist>Area__c</picklist>
+        <values>
+            <fullName>3rd Party Connectors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accounts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automation Rules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Classic Lightning Builder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contacts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dynamic Lists</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engagement Studio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Form Handlers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Landing Pages</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Layout Template</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightning Email Builder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opportunities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pardot Field Mapping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pardot Forms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pardot Scoring%2FGrading</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reports %26 Dashboards</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Static Lists</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Currently_With__c</picklist>
+        <values>
+            <fullName>Client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FullCRM</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salesforce</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority__c</picklist>
+        <values>
+            <fullName>Critical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Normal</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Stand Still</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Request_Type__c</picklist>
+        <values>
+            <fullName>Bug_Issue</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Development Roadmap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feature Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Question</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready to Test</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Working On</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

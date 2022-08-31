@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="warehouse" type="Warehouse__c"/>
+    <aura:attribute name="supplier" type="String"/>
+</aura:event>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Patrick_s_order</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>CURRENCY_ISO_CODE</columns>
+    <columns>Opportunity__c</columns>
+    <columns>Status__c</columns>
+    <columns>IntegrationStatus__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Despatch_Warehouse__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>Patrick´s order</label>
+</ListView>

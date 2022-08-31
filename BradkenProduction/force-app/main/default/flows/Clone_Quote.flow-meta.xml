@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <interviewLabel>Clone Quote {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Clone Quote</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Screen_Cloned_Quote</name>
+        <label>Quote Cloned</label>
+        <locationX>293</locationX>
+        <locationY>50</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Quote_Cloned</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;Quote Cloned&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Quote_URL</name>
+            <fieldText>&lt;p&gt;Click &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;{!NewQuoteURL} &lt;/span&gt;to view new Quote&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Clone_Quote</startElementReference>
+    <status>Active</status>
+    <subflows>
+        <name>Clone_Quote</name>
+        <label>Clone Quote</label>
+        <locationX>172</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Screen_Cloned_Quote</targetReference>
+        </connector>
+        <flowName>Clone_Quote_Function</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>NewQuoteId</assignToReference>
+            <name>NewQuoteId</name>
+        </outputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>NewQuoteURL</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;a href=&quot;/{!NewQuoteId}&quot; target=&quot;_self&quot;&gt;here&lt;/a&gt;</text>
+    </textTemplates>
+    <variables>
+        <description>Id of newly cloned Quote</description>
+        <name>NewQuoteId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Len_s_teams_outstanding_invoices</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalInvoiceAmountLocal__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Vincent Tsang,Randy Rolf</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <label>Len&apos;s teams outstanding invoices</label>
+</ListView>

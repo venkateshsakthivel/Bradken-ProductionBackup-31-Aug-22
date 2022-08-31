@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Overdue_Invoices1</fullName>
+    <columns>PurchaseOrder__c</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Status__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalInvoiceAmount__c</columns>
+    <columns>UnibisSalesOrderHyperlink__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Brad coulson,Ryan Bowen,Neda Mahdavi,Brett Hainsworth,Rachel Taylor,John Fitzgerald,Wayne Motteram,Anthony Barron,Jordan Pollard,Shane Bennett,Tayla Murphy,AJ Strydom,Bruce Weiland,Jim Scobbie,Ryan Muirhead</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Overdue - Unexplained</value>
+    </filters>
+    <label>Overdue Invoices</label>
+</ListView>

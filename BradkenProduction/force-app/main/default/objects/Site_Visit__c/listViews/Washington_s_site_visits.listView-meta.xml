@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Washington_s_site_visits</fullName>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Sales_Rep__c</field>
+        <operation>equals</operation>
+        <value>Washington Munetsi</value>
+    </filters>
+    <label>Washington&apos;s site visits</label>
+</ListView>

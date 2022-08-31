@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <submitter>Quote_Submitters</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Sales_Support</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Account</field>
+        <field>Lead_Time__c</field>
+        <field>Total_Cost_Price_excl_FTP__c</field>
+        <field>Total_Freight_Margin_Percentage__c</field>
+        <field>Total_Cost_Price_FTP__c</field>
+        <field>Total_Outbound_Freight_Sell_Price__c</field>
+        <field>Total_Sell_Price_excl_FTP__c</field>
+        <field>Total_Sell_Price_FTP__c</field>
+        <field>Margin_Percentage_excl_FTP__c</field>
+        <field>Margin_Percentage_FTP__c</field>
+        <field>Total_Cost_Price_incl_FTP__c</field>
+        <field>Internal_Comments__c</field>
+        <field>Total_Sell_Price_incl_FTP__c</field>
+        <field>Comments__c</field>
+        <field>Total_Margin_Percentage__c</field>
+        <field>Created_Date__c</field>
+        <field>Forecast_Product_Cost_Increase__c</field>
+        <field>Inco_Term__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>On_Behalf_Of__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Owner for Approval</description>
+        <label>Assign to Owner</label>
+        <name>Assign_to_Owner</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>bobell@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Shared Services Team Approval for New Customer</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Quote.NewCustomer__c</field>
+                <operation>equals</operation>
+                <value>Yes</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Shared Services Team Approval</label>
+        <name>Shared_Services_Team_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>dbromley@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for Mining Buckets Product Group</description>
+        <entryCriteria>
+            <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Mining Buckets</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Mining Bucket Prod Dev Manager Approval</label>
+        <name>Mining_Bucket_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>sdonnelly@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for &apos;Rail&apos; &amp; &apos;Industrial Product Group</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND (4 OR 5)</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Rail Spares</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Industrial</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Rail &amp; Industrial Prod Dev Manager Approval</label>
+        <name>Rail_Industrial_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>davidg@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for GET Product Group</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>GET</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>GET Prod Dev Manager Approval</label>
+        <name>GET_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>mhillier@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for Crawler Product Group</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Crawler Systems</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Crawler Prod Dev Manager Approval</label>
+        <name>Crawler_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>jgarcia@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for &apos;Fixed Plant Liners&apos; Product Group</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Fixed Plant Liners</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Fixed Plant Liners Prod Dev Manager Approval</label>
+        <name>Fixed_Plant_Liners_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>mpatton@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for Crusher Liners Product Group</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Crusher Liners</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Crusher Liners Prod Dev Manager Approval</label>
+        <name>Crusher_Liners_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>mpatton@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for Steel Mill Liners Product Group</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Steel Mill Liners</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Steel Mill Liners Prod Dev Manager Approval</label>
+        <name>Steel_Mill_Liners_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>mhazell@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for Other MinPro Product Group Region Americas</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4 AND (5 OR 6 OR 7)</booleanFilter>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Other MinPro</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.OwnersRegion__c</field>
+                <operation>contains</operation>
+                <value>USA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.OwnersRegion__c</field>
+                <operation>contains</operation>
+                <value>Canada</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.OwnersRegion__c</field>
+                <operation>contains</operation>
+                <value>America</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Other MinPro America Prod Dev Manager Approval</label>
+        <name>Other_MinPro_America_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>sdonnelly@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for Ball and Rings Product Group</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>Balls and Rings</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Balls and Rings Prod Dev Manager Approval</label>
+        <name>Balls_and_Rings_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>mpatton@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route Approval to Product Development Manager for Other MinPro Product Group Region AustAsia</description>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3) AND 4 AND (5 OR 6 OR 7 OR 8)</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>equals</operation>
+                <value>MinPro</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.OwnersRegion__c</field>
+                <operation>contains</operation>
+                <value>Aust</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.OwnersRegion__c</field>
+                <operation>contains</operation>
+                <value>Asia</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.OwnersRegion__c</field>
+                <operation>contains</operation>
+                <value>Africa</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.OwnersRegion__c</field>
+                <operation>contains</operation>
+                <value>CIS</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Other MinPro AustAsia Prod Dev Manager Approval</label>
+        <name>Other_MinPro_AustAsia_Prod_Dev_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Facility_Manager__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Manufacturing / Facility Manager if only one  facility is selected on the Quote</description>
+        <entryCriteria>
+            <booleanFilter>((4 OR 5) AND 1) OR ((2 OR 3) AND 1)</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Facility_Count__c</field>
+                <operation>equals</operation>
+                <value>1</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Non_standard_Lead_Time_Required__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>contains</operation>
+                <value>Mining Buckets</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Product_Group__c</field>
+                <operation>contains</operation>
+                <value>Mining Services</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Facility/Manufacturing Manager Approval</label>
+        <name>Facility_Manufacturing_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>jrankovich@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Commercial Manager for Approval if New Customer or Unapproved Payment Terms</description>
+        <entryCriteria>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Quote.UnapprovedNonStandardTCs__c</field>
+                <operation>equals</operation>
+                <value>Yes</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.UnapprovedNonStdPaymentTerms__c</field>
+                <operation>equals</operation>
+                <value>Yes</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Commercial Manager Approval</label>
+        <name>Commercial_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Owners_Manager__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Level 1</description>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; On_Behalf_Of__r.Approval_Limit__c</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver_2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 2</description>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver_3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 3</description>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver_4</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 4</description>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver_5</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 5</description>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver_6</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 6</description>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver_7</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 7</description>
+        <entryCriteria>
+            <formula>Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c</formula>
+        </entryCriteria>
+        <label>Next Approver</label>
+        <name>Next_Approver_8</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <emailTemplate>Quote_Email/Quote_Notification</emailTemplate>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND
+(
+TEXT(Status) = &quot;Working Proposal&quot;,
+NOT(CONTAINS(On_Behalf_Of__r.UserRole.Name, &quot;Sales Support&quot;)),
+Total_Sell_Price_incl_FTP__c &gt; 0,
+Total_Cost_Price_incl_FTP__c &gt; 0,
+NOT(Opportunity.Account.Customer_Type__c = &quot;HITACHI CONSTRUCTION MACHINERY&quot;),
+NOT(Opportunity.Account.Customer_Type__c = &quot;HCM AUTHORISED DEALERS&quot;)
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Final_Approval_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Populate_Estimating_Finished_date3</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Quote_Approval_Status_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Quote_Record_Type_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Quote_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Rejection_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Update_Quote_Rejection_Reason</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>true</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Fill_In_Submitted_for_Approval_Date</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Populate_Estimating_Finished_datev4</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Quote_Approval_Status_Pending</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Mining-Quote Approval</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>1</processOrder>
+    <recallActions>
+        <action>
+            <name>Update_Sub_Status_to_Unapproved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

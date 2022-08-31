@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_Martin_s_Site_Visits</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>Site_Visit_Date__c</columns>
+    <columns>Site_Visit_Secondary_Purpose__c</columns>
+    <columns>Opportunity1__c</columns>
+    <columns>Next_Steps__c</columns>
+    <columns>Colleague_in_Attendance__c</columns>
+    <columns>Sales_Rep__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sales_Rep__c</field>
+        <operation>equals</operation>
+        <value>Martin Steyn,Reinard Abbott</value>
+    </filters>
+    <label>Reinard and Martin&apos;s Site Visits</label>
+</ListView>

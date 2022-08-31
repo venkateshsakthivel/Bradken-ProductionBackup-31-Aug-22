@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <description>Represents the status of the Invoice</description>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Due Within 7 Days</fullName>
+                <default>false</default>
+                <label>Due Within 7 Days</label>
+            </value>
+            <value>
+                <fullName>Overdue - Unexplained</fullName>
+                <default>false</default>
+                <label>Overdue - Unexplained</label>
+            </value>
+            <value>
+                <fullName>Awaiting Customer Response</fullName>
+                <default>false</default>
+                <label>Awaiting Customer Response</label>
+            </value>
+            <value>
+                <fullName>Customer Dispute Quality</fullName>
+                <default>false</default>
+                <label>Customer Dispute Quality</label>
+            </value>
+            <value>
+                <fullName>Customer Dispute Payment Terms</fullName>
+                <default>false</default>
+                <label>Customer Dispute Payment Terms</label>
+            </value>
+            <value>
+                <fullName>Payment Date Confirmed</fullName>
+                <default>false</default>
+                <label>Payment Date Confirmed</label>
+            </value>
+            <value>
+                <fullName>Paid</fullName>
+                <default>false</default>
+                <label>Paid</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

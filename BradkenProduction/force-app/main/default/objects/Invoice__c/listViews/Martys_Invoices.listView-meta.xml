@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Martys_Invoices</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>DueDate__c</columns>
+    <columns>Status__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>PaidDate__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Marty Borowicz</value>
+    </filters>
+    <label>Martys Invoices</label>
+</ListView>

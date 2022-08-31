@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Daniel_s_Site_Visits</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Site_Visit_Date__c</columns>
+    <columns>Site_Visit_Secondary_Purpose__c</columns>
+    <columns>Opportunity1__c</columns>
+    <columns>Opportunity2__c</columns>
+    <columns>Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>equals</operation>
+        <value>Daniel Phiri</value>
+    </filters>
+    <label>Daniel&apos;s Site Visits</label>
+</ListView>

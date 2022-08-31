@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NAM_MMP_Outstanding_Invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>OutstandingAmountinLocal__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>Status__c</columns>
+    <columns>DocumentDate__c</columns>
+    <columns>PurchaseOrder__c</columns>
+    <columns>InvoiceAmountinLocal__c</columns>
+    <columns>TotalOutstandingAmountAUD__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>contains</operation>
+        <value>award,kaila,chmilar,isaac</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <label>CAN MMP Outstanding Invoices</label>
+</ListView>

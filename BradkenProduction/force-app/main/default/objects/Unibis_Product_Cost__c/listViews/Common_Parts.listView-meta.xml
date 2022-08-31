@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Common_Parts</fullName>
+    <columns>Part_Number__c</columns>
+    <columns>Cost__c</columns>
+    <columns>CURRENCY_ISO_CODE</columns>
+    <columns>Supply_Warehouse__c</columns>
+    <columns>Last_Updated_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Part_Number__c</field>
+        <operation>contains</operation>
+        <value>2800,4100,T810</value>
+    </filters>
+    <filters>
+        <field>Supply_Warehouse__c</field>
+        <operation>equals</operation>
+        <value>12A,G51,G57</value>
+    </filters>
+    <label>Common Parts MMP AZ</label>
+</ListView>

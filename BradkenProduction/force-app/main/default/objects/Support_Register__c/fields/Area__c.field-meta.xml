@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Area__c</fullName>
+    <externalId>false</externalId>
+    <label>Area</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>3rd Party Connectors</fullName>
+                <default>false</default>
+                <label>3rd Party Connectors</label>
+            </value>
+            <value>
+                <fullName>Accounts</fullName>
+                <default>false</default>
+                <label>Accounts</label>
+            </value>
+            <value>
+                <fullName>All Objects</fullName>
+                <default>false</default>
+                <label>All Objects</label>
+            </value>
+            <value>
+                <fullName>Automation Rules</fullName>
+                <default>false</default>
+                <label>Automation Rules</label>
+            </value>
+            <value>
+                <fullName>Classic Lightning Builder</fullName>
+                <default>false</default>
+                <label>Classic Lightning Builder</label>
+            </value>
+            <value>
+                <fullName>Contacts</fullName>
+                <default>false</default>
+                <label>Contacts</label>
+            </value>
+            <value>
+                <fullName>Contracts</fullName>
+                <default>false</default>
+                <label>Contracts</label>
+            </value>
+            <value>
+                <fullName>Customer Purchase Order</fullName>
+                <default>false</default>
+                <label>Customer Purchase Order</label>
+            </value>
+            <value>
+                <fullName>Dynamic Lists</fullName>
+                <default>false</default>
+                <label>Dynamic Lists</label>
+            </value>
+            <value>
+                <fullName>Engagement Studio</fullName>
+                <default>false</default>
+                <label>Engagement Studio</label>
+            </value>
+            <value>
+                <fullName>Form Handlers</fullName>
+                <default>false</default>
+                <label>Form Handlers</label>
+            </value>
+            <value>
+                <fullName>Invoice</fullName>
+                <default>false</default>
+                <label>Invoice</label>
+            </value>
+            <value>
+                <fullName>Landing Pages</fullName>
+                <default>false</default>
+                <label>Landing Pages</label>
+            </value>
+            <value>
+                <fullName>Layout Template</fullName>
+                <default>false</default>
+                <label>Layout Template</label>
+            </value>
+            <value>
+                <fullName>Leads</fullName>
+                <default>false</default>
+                <label>Leads</label>
+            </value>
+            <value>
+                <fullName>Lightning Email Builder</fullName>
+                <default>false</default>
+                <label>Lightning Email Builder</label>
+            </value>
+            <value>
+                <fullName>Marketing Analytics</fullName>
+                <default>false</default>
+                <label>Marketing Analytics</label>
+            </value>
+            <value>
+                <fullName>Opportunities</fullName>
+                <default>false</default>
+                <label>Opportunities</label>
+            </value>
+            <value>
+                <fullName>Opportunity &amp; Quote</fullName>
+                <default>false</default>
+                <label>Opportunity &amp; Quote</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Pardot Field Mapping</fullName>
+                <default>false</default>
+                <label>Pardot Field Mapping</label>
+            </value>
+            <value>
+                <fullName>Pardot Forms</fullName>
+                <default>false</default>
+                <label>Pardot Forms</label>
+            </value>
+            <value>
+                <fullName>Pardot Scoring/Grading</fullName>
+                <default>false</default>
+                <label>Pardot Scoring/Grading</label>
+            </value>
+            <value>
+                <fullName>QLE</fullName>
+                <default>false</default>
+                <label>QLE</label>
+            </value>
+            <value>
+                <fullName>QLI</fullName>
+                <default>false</default>
+                <label>QLI</label>
+            </value>
+            <value>
+                <fullName>Quote</fullName>
+                <default>false</default>
+                <label>Quote</label>
+            </value>
+            <value>
+                <fullName>Reports &amp; Dashboards</fullName>
+                <default>false</default>
+                <label>Reports &amp; Dashboards</label>
+            </value>
+            <value>
+                <fullName>Site Visit</fullName>
+                <default>false</default>
+                <label>Site Visit</label>
+            </value>
+            <value>
+                <fullName>Static Lists</fullName>
+                <default>false</default>
+                <label>Static Lists</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

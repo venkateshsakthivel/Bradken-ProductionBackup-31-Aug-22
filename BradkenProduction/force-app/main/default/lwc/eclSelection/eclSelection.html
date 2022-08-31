@@ -1,0 +1,26 @@
+<template>
+	<div style="display: flex;">
+		<div class="slds-size_1-of-4"></div>
+		<div class="slds-size_2-of-4" style="min-width: 400px;">
+			<lightning-card title="ECL Supplier Group">
+					<div class="slds-p-around_medium lgc-bg">
+						<lightning-input type="text" placeholder="Please enter an ECL supplier group name for the following products:" onchange={handleFillingGroup} max-length ="255"></lightning-input>
+					</div>
+					<template for:each={selectedQuoteFac} for:item="quoteFacility">
+						<div key={quoteFacility.Id}>
+							<ul class="slds-var-m-around_medium">
+								<li > Supplier Record: {quoteFacility.Name}</li>
+								<li > Supplier Name: {quoteFacility.Facility_Name__c}</li>
+								<li > Quote Line Number: {quoteFacility.Quote_Line_Item__r.LineNumber}</li>
+								<li > Product: {quoteFacility.Bradken_Part_Number__c}</li>
+							</ul>
+						</div>
+					</template>
+			</lightning-card>
+			<div style="float: right; margin-top: 15px; margin-right: 15px;">
+				<lightning-button variant="brand" label="Confirm" onclick={handleNext} class="slds-m-left_x-small"></lightning-button>
+			</div>
+		</div>
+		<div class="slds-size_1-of-4"></div>
+	</div>
+</template>

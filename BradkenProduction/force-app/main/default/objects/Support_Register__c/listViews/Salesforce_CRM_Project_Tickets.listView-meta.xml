@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salesforce_CRM_Project_Tickets</fullName>
+    <columns>NAME</columns>
+    <columns>Area__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Currently_With__c</columns>
+    <columns>Project_SOW__c</columns>
+    <columns>Priority_Flag__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Support_Register__c.Salesforce_CRM</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Project</value>
+    </filters>
+    <label>Salesforce CRM Project Tickets</label>
+</ListView>

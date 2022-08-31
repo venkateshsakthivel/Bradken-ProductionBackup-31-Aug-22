@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Converted_Product_Cost__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT( Quote__r.CurrencyIsoCode ) + &quot; &quot; + TEXT(  ROUND(Product_Cost_converted__c,2)  )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Product cost converted to Quote currency</inlineHelpText>
+    <label>Converted Product Cost</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

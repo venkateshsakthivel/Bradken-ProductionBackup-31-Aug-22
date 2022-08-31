@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jimmy_MMP_Afica_Parts_list</fullName>
+    <columns>Part_Number__c</columns>
+    <columns>Cost__c</columns>
+    <columns>CURRENCY_ISO_CODE</columns>
+    <columns>Supply_Warehouse__c</columns>
+    <columns>Last_Updated_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Part_Number__c</field>
+        <operation>equals</operation>
+        <value>UK340RL-1K,OK340S1400-2A,UK120ERL-1A,DK340DT12-1K,OK340FI1488-3K,OK340P110-1,OK400S2000-2A,UK400RL-1K,UK400RR-1K,DK400DT13-1,OK400FI2050-1A,000617,OK400P140-1</value>
+    </filters>
+    <filters>
+        <field>Supply_Warehouse__c</field>
+        <operation>equals</operation>
+        <value>,12A</value>
+    </filters>
+    <label>Jimmy MMP Africa Parts list</label>
+</ListView>

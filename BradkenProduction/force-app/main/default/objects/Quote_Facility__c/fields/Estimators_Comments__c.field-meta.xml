@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimators_Comments__c</fullName>
+    <description>Comments left by the Facility on completion of the form. Updated by Nintex</description>
+    <externalId>false</externalId>
+    <label>Estimators&apos; Comments</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

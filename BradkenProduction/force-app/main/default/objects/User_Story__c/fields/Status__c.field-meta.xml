@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>User Story Created</fullName>
+                <default>true</default>
+                <label>User Story Created</label>
+            </value>
+            <value>
+                <fullName>User Story Confirmed</fullName>
+                <default>false</default>
+                <label>User Story Confirmed</label>
+            </value>
+            <value>
+                <fullName>Configuration</fullName>
+                <default>false</default>
+                <label>Configuration</label>
+            </value>
+            <value>
+                <fullName>System Testing</fullName>
+                <default>false</default>
+                <label>System Testing</label>
+            </value>
+            <value>
+                <fullName>UAT Testing</fullName>
+                <default>false</default>
+                <label>UAT Testing</label>
+            </value>
+            <value>
+                <fullName>Complete</fullName>
+                <default>false</default>
+                <label>Complete</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

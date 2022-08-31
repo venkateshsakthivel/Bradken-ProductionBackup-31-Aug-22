@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jimmy_Supit_Open_Invoices</fullName>
+    <columns>NAME</columns>
+    <columns>UnibisSalesOrderHyperlink__c</columns>
+    <columns>DocumentDate__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>OutstandingAmountinLocal__c</columns>
+    <columns>Status__c</columns>
+    <columns>InternalComments__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>JIMMY SUPIT</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>New,Due Within 7 Days,Overdue - Unexplained,Awaiting Customer Response,Customer Dispute Quality,Customer Dispute Payment Terms,Payment Date Confirmed</value>
+    </filters>
+    <label>Jimmy Supit Open Invoices</label>
+</ListView>

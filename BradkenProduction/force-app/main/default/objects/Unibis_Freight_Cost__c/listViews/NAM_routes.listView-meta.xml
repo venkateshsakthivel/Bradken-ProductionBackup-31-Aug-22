@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NAM_routes</fullName>
+    <columns>Supply_Warehouse__c</columns>
+    <columns>DespatchWH__c</columns>
+    <columns>CURRENCY_ISO_CODE</columns>
+    <columns>Rate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>DespatchWH__c</field>
+        <operation>contains</operation>
+        <value>H7,H5,G5,G7</value>
+    </filters>
+    <label>NAM routes</label>
+</ListView>

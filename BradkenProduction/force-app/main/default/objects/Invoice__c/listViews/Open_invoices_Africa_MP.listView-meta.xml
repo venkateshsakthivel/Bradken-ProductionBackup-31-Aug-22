@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_invoices_Africa_MP</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalInvoiceAmountAUD__c</columns>
+    <columns>Status__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Tarisha Naidoo,Chris Marais,Daniel Phiri,Gerhardus Nel,Quintin Leonard,Michael Menzah</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <label>Open invoices Africa MP</label>
+</ListView>

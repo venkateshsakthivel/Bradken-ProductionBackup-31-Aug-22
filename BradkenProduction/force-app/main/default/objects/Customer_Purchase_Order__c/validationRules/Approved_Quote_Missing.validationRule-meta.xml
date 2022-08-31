@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approved_Quote_Missing</fullName>
+    <active>true</active>
+    <description>If the opportunity has a synced quote but it is not approved then PO creation should not be possible</description>
+    <errorConditionFormula>AND
+(
+ $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+OR
+(
+  ISNULL(Opportunity__r.SyncedQuote.Id),
+  NOT(ISPICKVAL(Opportunity__r.SyncedQuote.Status, &apos;PO Received &amp; Checked&apos;))
+))</errorConditionFormula>
+    <errorMessage>Synced Quote missing or Synced Quote not in PO Received Status</errorMessage>
+</ValidationRule>

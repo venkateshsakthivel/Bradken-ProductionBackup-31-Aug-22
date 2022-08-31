@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MP_WA_AFRICA_INVOICES</fullName>
+    <columns>PurchaseOrder__c</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Status__c</columns>
+    <columns>TotalInvoiceAmount__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>DueDate__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>InternalComments__c</columns>
+    <columns>UnibisSalesOrderHyperlink__c</columns>
+    <columns>Debtors_Bucket_Label_2__c</columns>
+    <columns>Debtors_Bucket_Label_3__c</columns>
+    <columns>Debtors_Bucket_Label_4__c</columns>
+    <columns>Debtors_Bucket_Label_5__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>New,Due Within 7 Days,Paid</value>
+    </filters>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Johnny Doan,Washington Munetsi,Tony Barron,Jim Scobbie,Ryan Bowen,Neda Mahdavi,Brett Hainsworth,Rachel Taylor,John Fitzgerald,Wayne Motteram,Jordan Pollard,Shane Bennett,Tayla Strydom,AJ Strydom,Bruce Weiland,Carl Van Tonder,Scot Rundell</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Invoice__c.Invoice</value>
+    </filters>
+    <label>MP WA INVOICES</label>
+</ListView>

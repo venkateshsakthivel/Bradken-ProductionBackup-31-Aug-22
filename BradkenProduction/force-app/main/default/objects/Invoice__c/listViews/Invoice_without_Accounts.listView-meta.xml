@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoice_without_Accounts</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>PaidDate__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <columns>UnibisSalesOrderHyperlink__c</columns>
+    <columns>Status__c</columns>
+    <columns>DocumentDate__c</columns>
+    <columns>DueDate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Invoice without Accounts</label>
+</ListView>

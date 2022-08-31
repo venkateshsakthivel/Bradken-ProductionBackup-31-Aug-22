@@ -1,0 +1,69 @@
+.THIS .qli-product-name{
+    padding:0.1rem;
+}
+
+.THIS .qli-product-name-props table{
+    font-size:0.8em;
+}
+.THIS .stickyRow{
+	background: white !important;;
+    z-index:6 !important;
+    font-weight: normal;
+}
+.THIS .doRightPad{
+    padding-right: 2em !important;
+}
+.THIS .qli-product-name-props table td{
+    padding: 0px;
+}
+
+.THIS .td-col{
+    padding: 1em;
+}
+.THIS .orderItem{
+	padding-left: 1em !important;
+}
+.THIS .colTextArea{
+    min-width: 30em !important;
+}
+.THIS .colNumber{
+	min-width: 5em !important;
+}
+
+.THIS .colCurrency{
+    width:max-content !important;
+}
+
+.THIS [data-field-name="Supplier"]{
+    min-width:12em !important;
+}
+.THIS .deleteIcon:hover{
+    color: var(--lwc-colorBackgroundError);
+}
+
+.THIS .showInfoIcon{
+    color: var(--lwc-colorBackgroundError);
+}
+
+.THIS .disableInlineHelp lightning-helptext,
+.THIS .disableInlineHelp label{
+   display:none !important;
+}
+.THIS .disableInlineHelp .slds-dropdown{
+   z-index:5 !important;
+}
+.THIS [data-field-name="Despatch Warehouse"]{
+    width: max-content;
+	overflow: visible;
+}
+.THIS footer button{
+    float:none !important;
+}
+
+.THIS [data-showerror="yes"] input{
+    border:1px solid var(--lwc-colorBackgroundError);
+}
+/*
+.THIS .required-input input{
+    border-color:rgb(194, 57, 52);
+} */

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Open_SF_CRM_Tickets</fullName>
+    <columns>NAME</columns>
+    <columns>Area__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Currently_With__c</columns>
+    <columns>Status__c</columns>
+    <columns>Priority_Flag__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>New,Working On,Ready to Test,Pending Deployment,On Hold</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Support_Register__c.Salesforce_CRM</value>
+    </filters>
+    <label>Salesforce CRM Open Tickets</label>
+</ListView>

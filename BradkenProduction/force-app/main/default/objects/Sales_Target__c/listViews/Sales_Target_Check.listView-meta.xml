@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Target_Check</fullName>
+    <columns>Account__c</columns>
+    <columns>Sales_Region__c</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Budget_Period__c</columns>
+    <columns>Sales_Rep__c</columns>
+    <columns>Budgeted_Sales_AUD__c</columns>
+    <columns>Budgeted_Margin_AUD__c</columns>
+    <columns>Actual_Sales_AUD__c</columns>
+    <columns>Actual_Margin_AUD__c</columns>
+    <columns>Actual_Order_Intake_AUD__c</columns>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sales_Rep__c</field>
+        <operation>equals</operation>
+        <value>Darren Searles</value>
+    </filters>
+    <filters>
+        <field>Budget_Period__c</field>
+        <operation>greaterThan</operation>
+        <value>3/31/2020</value>
+    </filters>
+    <label>Sales Target Check</label>
+</ListView>

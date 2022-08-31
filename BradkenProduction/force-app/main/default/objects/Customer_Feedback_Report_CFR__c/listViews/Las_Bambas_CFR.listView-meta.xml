@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Las_Bambas_CFR</fullName>
+    <columns>Account__c</columns>
+    <columns>CFR_Initiator__c</columns>
+    <columns>NAME</columns>
+    <columns>CFR_Link__c</columns>
+    <columns>CFR_Number__c</columns>
+    <columns>Next_to_Action__c</columns>
+    <columns>Next_to_action_comments__c</columns>
+    <columns>CFR_Created_Date__c</columns>
+    <columns>CFR_Status__c</columns>
+    <columns>CFR_Type__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>Las Bambas</value>
+    </filters>
+    <label>Las Bambas CFR</label>
+</ListView>

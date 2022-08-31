@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event defined for quoteline editor" >
+    <aura:attribute name="action" type="String" />
+    <aura:attribute name="payload" type="String" />
+</aura:event>

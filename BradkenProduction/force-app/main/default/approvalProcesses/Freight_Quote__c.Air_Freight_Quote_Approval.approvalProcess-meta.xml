@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <submitter>Quote_Submitters</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Sales_Support</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Service__c</field>
+        <field>Order__c</field>
+        <field>Sales_Rep__c</field>
+        <field>Valid_To__c</field>
+        <field>Estimated_Transit_Time__c</field>
+        <field>Owner</field>
+        <field>CurrencyIsoCode</field>
+        <field>Total_Cost__c</field>
+        <field>Parent_Currency__c</field>
+        <field>Total_Cost_converted__c</field>
+        <field>Air_Freight_Request_reason__c</field>
+        <field>Air_Freight_Request_Comments__c</field>
+        <field>Who_is_paying_for_freight__c</field>
+        <field>What_is_the_Split__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Sales_Rep__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Assign to Sales Rep</label>
+        <name>Assign_to_Sales_Rep</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>fbatts@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL( $User.Sales_Region__c ,&quot;Australasia&quot;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Head of Sales (Australasia)</label>
+        <name>Head_of_Sales_Australasia</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>glarose@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL( $User.Sales_Region__c ,&quot;North America&quot;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Head of Sales (North America)</label>
+        <name>Head_of_Sales_North_America</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>darrenm@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL( $User.Sales_Region__c ,&quot;South America&quot;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Head of Sales (South America)</label>
+        <name>Head_of_Sales_South_America</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>bdocherty@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL( $User.Sales_Region__c ,&quot;Africa/CIS/Europe&quot;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Head of Sales (Africa/CIS/Europe)</label>
+        <name>Head_of_Sales_Africa_CIS_Europe</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>jlunn@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL( $User.Sales_Region__c ,&quot;HCM&quot;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Head of Sales (HCM)</label>
+        <name>Head_of_Sales_HCM</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>darrenm@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>&gt;=$25k</description>
+        <entryCriteria>
+            <formula>Total_Cost__c /CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt;= 25000</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>swinstone@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>&gt;=$650k Air Freight Cost</description>
+        <entryCriteria>
+            <formula>Total_Cost__c /CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt;= 650000</formula>
+        </entryCriteria>
+        <label>Next Approver</label>
+        <name>Next_Approver_CEO</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Approval process based on approval limit of the user&apos;s sales region when the sales rep requires an air freight approved.
+&lt;$25k goes to the region&apos;s head of sales
+&gt;=$25k &amp; &lt;650k goes to Darren Muir
+&gt;=$650k goes to Sean Winstone</description>
+    <emailTemplate>unfiled$public/Air_Freight_Approval_Template_1653294575149</emailTemplate>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <finalApprovalActions>
+        <action>
+            <name>Air_Freight_Quote_Approved</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Update_to_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Air_Freight_Quote_Rejected</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Update_to_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Update_to_Pending_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Air Freight Quote Approval</label>
+    <processOrder>1</processOrder>
+    <recallActions>
+        <action>
+            <name>Update_to_Responded</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

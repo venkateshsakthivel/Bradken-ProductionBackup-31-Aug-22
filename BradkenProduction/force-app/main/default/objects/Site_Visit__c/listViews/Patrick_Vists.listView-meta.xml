@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Patrick_Vists</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <columns>Hours__c</columns>
+    <columns>Site_Visit_Date__c</columns>
+    <columns>Site_name__c</columns>
+    <columns>Contact__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Sales_Rep__c</columns>
+    <columns>Type_of_Innovation_Presented__c</columns>
+    <columns>Hours_spent_travelling__c</columns>
+    <columns>Hours_spent_with_Customer__c</columns>
+    <columns>PD_Personnel_hours_on_site__c</columns>
+    <columns>Site_Visit__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>Patrick Vists</label>
+</ListView>

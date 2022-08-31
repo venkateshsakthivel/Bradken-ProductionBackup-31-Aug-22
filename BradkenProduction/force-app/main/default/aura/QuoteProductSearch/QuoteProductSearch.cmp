@@ -1,0 +1,194 @@
+<!-- QuoteProductSearch -->
+<aura:component controller="QuoteLineEditorController">
+    <!-- Attibutes -->
+    <aura:attribute name="isPricebookChanged" type="boolean" default="true"/>
+    <aura:attribute name="isInitDone" type="boolean" default="true"/>
+    
+    <aura:attribute name="pricebook2Id" type="String" default=""/>
+    <aura:attribute name="oldpricebook2Id" type="String" default=""/>
+    <aura:attribute name="quote" type="Quote" default=""/>
+    <aura:attribute name="disabled" type="boolean" default="false"/>
+    <aura:attribute name="selectedProducts" type="list" default="[]"/>
+    <aura:attribute name="searchResults" type="list" default="[]"/>
+    <aura:attribute name="isSearching" type="Boolean" default="false"/>
+    <aura:attribute name="pricebookoptions" type="List" default="[]"/>
+    <aura:attribute name="hideModal" type="boolean" default="true"/>
+    <aura:attribute name="quoteTotal" type="Object" default="{total:0}"/>
+    <aura:attribute name="hideImportQLI" type="boolean" default="true"/>
+    <aura:attribute name="disableWarehouseSearch" type="boolean" default="TRUE"/>
+    
+    
+    
+    <!-- Actions -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:method name="quoteProductSearch" action="{!c.doAction}" >
+        <aura:attribute name="action" type="String"/>
+        <aura:attribute name="payload" type="String"/>
+    </aura:method>
+    <aura:registerEvent name="QuoteLineEditorEvent" type="c:QuoteLineEditorEvent"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    
+    <!--markup -->
+    
+    <!-- Search Box -->
+    <lightning:layout horizontalAlign="spread" multipleRows="true" class="searchBox">
+        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1" >
+            <!--<lightning:input
+                             aura:id="quoteTotal"
+                             name="quoteTotal"
+                             label="Quote Total"
+                             type="text"
+                             disabled="true"
+                             value="{!$Locale.currency +''+ v.quoteTotal.total}"
+                             />-->
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" size="4" smallDeviceSize="4" mediumDeviceSize="4" largeDeviceSize="4" >
+            <lightning:combobox name="pricebookInput" 
+                                label="{!$Label.c.QuoteLineEditor_Select_Pricebook_Label}"
+                                value="{!v.pricebook2Id}"
+                                options="{!v.pricebookoptions}"
+                                required="true"
+                                onchange="{!c.handlePricebookChange}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1" >
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" size="4" smallDeviceSize="4" mediumDeviceSize="4" largeDeviceSize="4" >
+            <aura:if isTrue="{!v.pricebook2Id}">
+                <label class="slds-form-element__label" for="lookupInput">
+                    {!$Label.c.QuoteLineEditor_Search_Product_Label}
+                </label>
+                <lightning:helptext content="{!$Label.c.QuoteLineEditor_Product_Search_HelpText}"/>
+                <lightning:input
+                                 aura:id="lookupInput"
+                                 name="lookupInput"
+                                 label="{!$Label.c.QuoteLineEditor_Search_Product_Label}"
+                                 isLoading="{!v.isSearching}"
+                                 type="search"
+                                 variant="label-hidden"
+                                 placeholder="{!$Label.c.QuoteLineEditor_Search_Product_Label}"
+                                 onchange="{!c.handleKeyUp}"/>
+            </aura:if>
+        </lightning:layoutItem>  
+        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1" class="importButton" >
+            <aura:if isTrue="{!v.pricebook2Id}">
+                <lightning:button aura:id="importCSV" variant="brand" label="{!$Label.c.CSV_ImportButtonLabel}"  onclick="{!c.importCSV}" name="importCSVButton"/>
+            </aura:if>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- Search Results -->
+    <!-- search result header -->
+    
+      
+    
+    <lightning:layout horizontalAlign="spread" multipleRows="true" class="searchResultHeader">
+        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1" >
+            
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" size="3" smallDeviceSize="3" mediumDeviceSize="3" largeDeviceSize="3" >
+            <aura:if isTrue="{!v.searchResults.length > 0}">
+                {!$Label.c.QuoteLineEditor_Search_Result_Label}:
+                <span class="searchCount">{!v.searchResults.length}</span> 
+            </aura:if>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1" >
+            <aura:if isTrue="{!v.searchResults.length > 0}">
+                <lightning:button aura:id="selectAll" variant="Brand" label="{!$Label.c.QuoteLineEditor_SelectAll_Product_Button}"  onclick="{! c.handleItemAdd }" class="btn-selectall-qli" name="selectAll"/>
+            </aura:if>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1" >
+            
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5" >
+            <aura:if isTrue="{!v.selectedProducts.length > 0}">
+                <lightning:layout horizontalAlign="spread" multipleRows="true">
+                    <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="8" largeDeviceSize="10" >
+                        <lightning:button aura:id="addProductToQLI" variant="brand" label="{!$Label.c.QuoteLineEditor_Add_Products_Button+'('+v.selectedProducts.length+')'}"  onclick="{! c.handleItemAdd }" name="addProductToQLI" class="btn-addqli"/>
+                        <lightning:button aura:id="removeAll" variant="destructive" label="{!$Label.c.QuoteLineEditor_Remove_Products_Button}" onclick="{!c.handleItemAdd}" name="removeAll" class="btn-clearpill"/>
+                    </lightning:layoutItem>  
+                </lightning:layout>        
+            </aura:if>
+        </lightning:layoutItem>  
+        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1" >
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- search result container -->
+    <aura:if isTrue="{!or(v.searchResults.length > 0,v.selectedProducts.length > 0)}">
+        <lightning:layout horizontalAlign="spread" multipleRows="true" class="searchResultsContainer">
+            
+            <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="4" largeDeviceSize="6">
+                <lightning:layout horizontalAlign="spread" multipleRows="true" class="slds-scrollable searchResultBox">
+                    <aura:iteration  items="{!v.searchResults}" var="record" indexVar="idx" >
+                        <lightning:layoutItem flexibility="auto" size="11" smallDeviceSize="11" mediumDeviceSize="11" largeDeviceSize="11"  >
+                            <div class="searchItem">
+                                <span class="addText">Add</span>
+                                <lightning:input aura:id="{!record.value}"  
+                                                 onchange="{!c.handleItemAdd}" 
+                                                 type="checkbox" 
+                                                 class="ps-search-checkboxbutton" 
+                                                 title="{!record.label}" 
+                                                 label="{!record.label}" 
+                                                 name="{!'record'+idx}"/>
+                            </div>
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="4" largeDeviceSize="6">
+                <aura:if isTrue="{!v.selectedProducts.length > 0}">
+                    <lightning:layout horizontalAlign="spread" multipleRows="true" class="slds-scrollable selectedProductsBox">
+                        <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="8" largeDeviceSize="10" >
+                            <!--lightning:pillContainer items="{!v.selectedProducts}" onitemremove="{!c.handleItemRemove}"/-->
+                            <div class="slds-pill_container">
+                                <ul class="slds-listbox slds-listbox_horizontal" role="listbox" aria-label="Selected Products:" aria-orientation="horizontal">					
+                                    <aura:iteration  items="{!v.selectedProducts}" var="record" indexVar="idx" >
+                                        
+                                        <li class="slds-listbox-item" role="presentation">
+                                            <span class="slds-pill" role="option">
+                                                <span class="slds-icon_container slds-pill__remove" title="Remove">
+                                                    <lightning:buttonIcon iconName="utility:close" 
+                                                                          variant="bare" 
+                                                                          iconClass="dark"
+                                                                          onclick="{!c.handleItemRemove}"
+                                                                          name="{!idx}"
+                                                                          alternativeText="Remove" />
+                                                </span>
+                                                <span class="slds-pill__label" title="{!record.label}">{!record.label}</span>
+                                            </span>
+                                        </li>
+                                    </aura:iteration>
+                                </ul>
+                            </div>
+                        </lightning:layoutItem>  
+                    </lightning:layout>      
+                </aura:if>
+            </lightning:layoutItem> 
+        </lightning:layout>
+    </aura:if>
+    <!-- Modal -->
+    <aura:if isTrue="{!!v.hideModal}">
+        <c:ModalContent title="{!$Label.c.QuoteLineEditor_Header_Warning}">
+            <aura:set attribute="headers">
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button aura:id="modalCancel" variant="neutral" label="{!$Label.c.QuoteLineEditor_PricebookChanged_No_Button}"  onclick="{!c.handleModalAction}" name="modalCancel"/>
+                <lightning:button aura:id="modalSave" variant="brand" label="{!$Label.c.QuoteLineEditor_PricebookChanged_Yes_Button}"  onclick="{!c.handleModalAction}" name="modalSave"/>
+            </aura:set>
+            {!$Label.c.QuoteLineEditor_PricebookChanged_Message}            
+        </c:ModalContent>
+    </aura:if>
+    
+    <!-- Import Modal -->
+    <aura:if isTrue="{!!v.hideImportQLI}">
+        <c:ModalContent title="{!$Label.c.CSV_ImportButtonLabel}">
+            <aura:set attribute="headers">
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button aura:id="modalCancel" variant="neutral" label="{!$Label.c.QuoteLineEditor_Cancel_Button}"  onclick="{!c.handleModalAction}" name="modalCancel"/>
+            </aura:set>
+            <c:CSVImportQuoteLines recordId="{!v.quote.Id}"/>
+        </c:ModalContent>
+    </aura:if>
+    
+    
+</aura:component>

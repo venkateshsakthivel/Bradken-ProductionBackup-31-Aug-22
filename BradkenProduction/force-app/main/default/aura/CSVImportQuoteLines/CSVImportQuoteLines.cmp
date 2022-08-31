@@ -1,0 +1,68 @@
+<!-- CSVImportQuoteLines -->
+<aura:component implements="force:lightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId" controller="CSV_FileImportController" access="global" >
+    <aura:attribute name="rows" type="Object[]" default="[]" />
+    <aura:attribute name="showSaveResult" type="boolean" default="false" />
+    <aura:attribute name="csv" type="string" default="" />
+    <aura:attribute name="parseResult" type="Object" />
+    <aura:attribute name="recordsInserted" type="Integer" default="0" />
+    <aura:attribute name="recordsFailed" type="Integer" default="0" />
+    <aura:attribute name="headers" type="String[]" default="[]" />
+    <aura:attribute name="sObjectName" type="String" default="QuoteLineItem" />
+    <aura:attribute name="fieldMappings" type="Object" />
+    <aura:attribute name="scriptsLoaded" type="boolean" default="false"/>
+    <aura:attribute name="maxFileSize" type="Integer" default="5000000" /> <!-- 5MB -->
+    <aura:attribute name="mappedHeaders" type="boolean" default="false" />
+    <aura:attribute name="existingQLICount" type="Integer" default="0"/>
+    <aura:attribute name="disableInputs" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="string" />
+
+    <aura:registerEvent name="QuoteLineEditorEvent" type="c:QuoteLineEditorEvent"/>    
+    <ltng:require scripts="{!$Resource.papaparse}" afterScriptsLoaded="{!c.scriptsLoaded}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Display messages -->
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <div aura:id="mySpinner" class="slds-spinner_container slds-hide">
+        <!-- LOADING SPINNER -->
+        <lightning:spinner alternativeText="Loading..." variant="brand" size="medium" style="background:transparent" />
+    </div>
+    <aura:if isTrue="{!v.scriptsLoaded}">
+        <aura:set attribute="else">
+            Script not loaded, please wait..
+        </aura:set><br/>
+        <aura:if isTrue="{!and(v.existingQLICount > 0 , !v.showSaveResult)}">
+            <div style="color:orange;padding-bottom:1rem;">
+                <b>{!$Label.c.CSV_Delete_Exisiting_Records_Warning_Message}</b>
+            </div>
+        </aura:if>
+        {!$Label.c.CSV_FileLabel}
+        <input required="true" type="file" class="file" aura:id="file" id="file1" style="margin-left:4px;" disabled="{!v.disableInputs}" onclick="{!c.enableShowSaveResult}" accept=".csv"/>
+        <br/><br/><lightning:button aura:id="uploadBtn" variant="brand" disabled="{!v.disableInputs}" label="{!$Label.c.CSV_UploadLabel}" onclick="{!c.handleFileUpload}" />
+        &nbsp;&nbsp;<lightning:button aura:id="importBtn" variant="brand" disabled="{!!v.disableInputs}" label="{!$Label.c.CSV_ImportButtonLabel}" onclick="{!c.handleImportRecords}" />
+        <br/><br/>
+        <aura:if isTrue="{!not(empty(v.headers))}">
+            <lightning:card>
+                <aura:set attribute="title">
+                    <aura:if isTrue="{!v.showSaveResult}">
+                        <aura:if isTrue="{!v.recordsFailed > 0}">
+                            <div style="font-size:12px;">
+                                <p style="color:red;font-size:15px;">{!v.recordsFailed}&nbsp;{!$Label.c.CSV_UploadFailMessage}</p>
+                            </div>
+                            <aura:set attribute="else">
+                                <p style="color:green;font-size:15px;">{!$Label.c.CSV_UploadSuccessMessage}</p>
+                            </aura:set>
+                        </aura:if>
+                    	<aura:set attribute="else">
+                        	<b>{!$Label.c.CSV_NumberOfRowsText} : </b>{!v.rows.length}<br/>
+                        </aura:set>
+                    </aura:if>
+                </aura:set> 
+                <aura:if isTrue="{!v.recordsFailed > 0}">
+                    <lightning:button aura:id="downloadBtn" 
+                                          variant="base" 
+                                          label="{!$Label.c.CSV_DownloadFailRecordsButton}" 
+                                          onclick="{!c.handleDownload}" />
+                </aura:if>
+            </lightning:card>
+        </aura:if>
+    </aura:if>    
+</aura:component>

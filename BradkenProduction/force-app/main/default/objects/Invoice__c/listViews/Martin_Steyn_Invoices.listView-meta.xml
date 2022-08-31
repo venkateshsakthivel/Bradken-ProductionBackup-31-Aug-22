@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Martin_Steyn_Invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Status__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>OutstandingAmountinLocal__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Martin Steyn</value>
+    </filters>
+    <filters>
+        <field>TotalOutstandingAmount__c</field>
+        <operation>greaterThan</operation>
+        <value>AUD 0.01</value>
+    </filters>
+    <label>Martin Steyn Invoices</label>
+</ListView>

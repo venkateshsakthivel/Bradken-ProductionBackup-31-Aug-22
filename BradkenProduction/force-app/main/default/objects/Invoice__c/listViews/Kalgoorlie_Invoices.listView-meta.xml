@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kalgoorlie_Invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>DueDate__c</columns>
+    <columns>FollowUpTaskCreated__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalInvoiceAmountAUD__c</columns>
+    <columns>TotalOutstandingAmountAUD__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Graham Kennedy,Darren Smith</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>New,Paid</value>
+    </filters>
+    <label>Invoices - Kalgoorlie</label>
+</ListView>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FMG_Roy_Hill_Newcrest_Invoices</fullName>
+    <columns>NAME</columns>
+    <columns>PurchaseOrder__c</columns>
+    <columns>Account__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalInvoiceAmount__c</columns>
+    <columns>Status__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>John Fitzgerald,Wayne Motteram,Rachel Taylor,Tony Barron,Carl Van Tonder</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Due Within 7 Days,Overdue - Unexplained,Awaiting Customer Response,Payment Date Confirmed</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>notEqual</operation>
+        <value>BHP BILLITON IRON ORE P/L DIRECT CHARGE</value>
+    </filters>
+    <label>FMG, Roy Hill &amp; Newcrest Invoices</label>
+    <sharedTo>
+        <roleAndSubordinates>Account_Manager_Rachel_Taylor</roleAndSubordinates>
+    </sharedTo>
+</ListView>

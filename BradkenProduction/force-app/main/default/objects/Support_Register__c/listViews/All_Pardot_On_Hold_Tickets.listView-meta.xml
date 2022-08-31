@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Pardot_On_Hold_Tickets</fullName>
+    <columns>NAME</columns>
+    <columns>Area__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Priority_Flag__c</columns>
+    <columns>Status__c</columns>
+    <columns>Created_Date__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>On Hold</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Support_Register__c.Pardot</value>
+    </filters>
+    <label>Pardot On-Hold Tickets</label>
+</ListView>

@@ -1,0 +1,101 @@
+.THIS .footerActions{
+    position: fixed;
+    left: 0;
+    bottom: 3em;
+    width: 100%;
+    padding: .5rem 1rem;
+    text-align: center;
+    background-color: rgb(243, 242, 242);
+    border-top: 2px solid rgb(221, 219, 218);
+    z-index: 9;
+}
+
+.THIS .tablecontainer-headertext{
+    /*position: fixed!important;*/
+    /*top: 6rem!important;*/
+    z-index: 9!important;
+    background: white!important;
+    width: 100%!important;
+    /* border: 0.5px solid red; */
+    padding: -3rem!important;
+    padding-top: 1.5rem!important;
+    padding-bottom: 0.5rem!important;
+}
+.THIS .tablecontainer {
+    /*padding-top: 2rem !important;*/
+    overflow: scroll !important;
+    position: relative !important;
+	max-height: 40rem !important;
+    padding-bottom:5em !important;
+    min-height: 50em;
+}
+
+.THIS .fixedCol{
+    position: fixed !important;
+    top: 9rem !important;
+    z-index: 4!important;
+    background: white!important;
+    padding: .25em!important;
+    width: auto;
+    left: 0rem !important;
+}
+.THIS{
+    padding-left:1em;
+}
+.THIS .selectAllPol{
+    padding:1em;
+}
+.THIS .po_name label, 
+.THIS .po_warehouse label,
+.THIS .selectAllPol label{
+    font-weight:bold;
+}
+.THIS .stickyCol{
+	background: white !important;
+    z-index: 3 !important;
+}
+.THIS .tablecontainer table {
+    position: relative !important;
+    border-collapse: collapse !important;
+}
+
+.THIS .tablecontainer td,.THIS .tablecontainer th {
+    padding: 0.25em !important;
+}
+
+.THIS .tablecontainer thead th {
+    position: -webkit-sticky !important; /* for Safari */
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 3 !important;
+    background: white !important;
+}
+
+.THIS .doRightPad{
+    padding-right: 2rem !important;
+}
+.THIS .tablecontainer tbody th {
+    position: -webkit-sticky !important; /* for Safari */
+    position: sticky !important;
+    left: 0 !important;
+}
+@media only screen and (min-width: 90em) {
+    .THIS .tablecontainer {
+        max-width: 90rem;
+    }
+}
+@media only screen and (min-width: 120em) {
+    .THIS .tablecontainer {
+    	max-width: 120rem;
+    }
+}
+@media only screen and (min-height: 50em) {
+    .THIS .tablecontainer {
+        /*padding-top: 2rem !important;*/
+        max-height: 20em !important;
+        overflow: scroll !important;
+        position: relative !important;
+        max-height: 50rem !important;
+        min-height: 50em;
+    }
+}

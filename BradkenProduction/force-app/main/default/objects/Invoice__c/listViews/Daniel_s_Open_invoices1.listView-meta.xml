@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Daniel_s_Open_invoices1</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>InternalComments__c</columns>
+    <columns>OutstandingAmountinLocal__c</columns>
+    <columns>Status__c</columns>
+    <columns>TotalInvoiceAmount__c</columns>
+    <columns>Debtors_Bucket_2__c</columns>
+    <columns>Debtors_Bucket_3__c</columns>
+    <columns>Debtors_Bucket_4__c</columns>
+    <columns>Debtors_Bucket_5__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>TotalInvoiceAmountAUD__c</columns>
+    <columns>SalesRep__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <label>Daniel&apos;s Open invoices</label>
+</ListView>

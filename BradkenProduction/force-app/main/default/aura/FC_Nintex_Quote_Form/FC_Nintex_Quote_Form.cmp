@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+	<aura:attribute name="recordId" type="String" />
+    <aura:attribute name="recordIdParam" type="string" default="id"/>
+    <aura:attribute name="formURL" type="string"/>
+    <aura:attribute name="width" type="string" default="100%"/>
+    <aura:attribute name="height" type="string" default="400"/>
+    <iframe src="{! v.formURL + '?' + v.recordIdParam + '='+ v.recordId}"
+            width="{!v.width}"
+            height="{!v.height}"
+            scrolling="auto"/>
+</aura:component>

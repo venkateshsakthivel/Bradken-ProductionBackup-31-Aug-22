@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Air_Freight_Request_reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Air Freight Request reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Manufacturing delays</fullName>
+                <default>false</default>
+                <label>Manufacturing delays</label>
+            </value>
+            <value>
+                <fullName>Unforeseen shipping delay</fullName>
+                <default>false</default>
+                <label>Unforeseen shipping delay</label>
+            </value>
+            <value>
+                <fullName>Customer requirement changed</fullName>
+                <default>false</default>
+                <label>Customer requirement changed</label>
+            </value>
+            <value>
+                <fullName>Customer required date critical and cannot be changed</fullName>
+                <default>false</default>
+                <label>Customer required date critical and cannot be changed</label>
+            </value>
+            <value>
+                <fullName>Internal error with the order</fullName>
+                <default>false</default>
+                <label>Internal error with the order</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

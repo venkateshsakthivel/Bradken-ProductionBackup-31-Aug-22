@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ernesto_in_Attendence</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Colleague_in_Attendance__c</columns>
+    <columns>Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Colleague_in_Attendance__c</field>
+        <operation>equals</operation>
+        <value>Ernesto Chavez</value>
+    </filters>
+    <label>Ernesto in Attendence</label>
+</ListView>

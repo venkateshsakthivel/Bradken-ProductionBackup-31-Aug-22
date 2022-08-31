@@ -1,0 +1,7 @@
+.THIS .updateAllButton{
+    padding-top: 1.5em !important;
+}
+.THIS .updateAllButton button{
+    background: rgb(245, 119, 15);
+    border: rgb(245, 119, 15);
+}

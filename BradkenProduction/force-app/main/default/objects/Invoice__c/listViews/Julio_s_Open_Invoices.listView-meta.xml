@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Julio_s_Open_Invoices</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>DocumentDate__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>Status__c</columns>
+    <columns>TotalOutstandingAmount__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Julio Aguilar</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <label>Julio&apos;s Open Invoices</label>
+</ListView>

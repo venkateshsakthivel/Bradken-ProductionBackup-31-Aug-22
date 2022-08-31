@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INVOICES_TO_SEND_MANUALLY</fullName>
+    <columns>PurchaseOrder__c</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>InternalComments__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>SalesRep__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>Status__c</columns>
+    <columns>TotalInvoiceAmountAUD__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>Newmont,Roy Hill,BHP,LAING,south 32,alcoa,worsley,st Ives,Gruyere,Agnew,Darlot,GSM</value>
+    </filters>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Johnny Doan,Washington Munetsi,Tony Barron,Jim Scobbie,Ryan Bowen,Neda Mahdavi,Brett Hainsworth,Rachel Taylor,John Fitzgerald,Wayne Motteram,Jordan Pollard,Shane Bennett,Tayla Strydom,AJ Strydom,Bruce Weiland,Carl Van Tonder,Scot Rundell</value>
+    </filters>
+    <filters>
+        <field>Unibis_Account_Number__c</field>
+        <operation>notEqual</operation>
+        <value>DARLEO02</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Invoice__c.Invoice</value>
+    </filters>
+    <label>WEST PRO INV TO CHECK MANUALLY</label>
+</ListView>

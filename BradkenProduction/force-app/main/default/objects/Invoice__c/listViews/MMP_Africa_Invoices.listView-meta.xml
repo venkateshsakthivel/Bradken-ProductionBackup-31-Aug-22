@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MMP_Africa_Invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CURRENCY_ISO_CODE</columns>
+    <columns>DueDate__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>InternalComments__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalOutstandingAmount__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>james gouws,reinard abbot,martin steyn,ashley gerstner,annamarie young</value>
+    </filters>
+    <filters>
+        <field>TotalOutstandingAmount__c</field>
+        <operation>greaterThan</operation>
+        <value>AUD 0.01</value>
+    </filters>
+    <label>MMP Africa Outstanding Invoices</label>
+</ListView>

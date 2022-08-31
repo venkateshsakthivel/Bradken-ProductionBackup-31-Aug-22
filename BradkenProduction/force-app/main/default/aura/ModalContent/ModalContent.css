@@ -1,0 +1,6 @@
+.THIS .c-modal{
+    width:40% !important;
+}
+.THIS .modal-footer,.THIS .modal-header{
+    display:block !important;
+}

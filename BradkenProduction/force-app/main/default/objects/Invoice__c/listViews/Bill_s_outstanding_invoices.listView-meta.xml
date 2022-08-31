@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bill_s_outstanding_invoices</fullName>
+    <columns>Account__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>DueDate__c</columns>
+    <columns>Status__c</columns>
+    <columns>TotalOutstandingAmountLocal__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <label>Bill&apos;s outstanding invoices</label>
+</ListView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Function_Points__c</fullName>
+    <externalId>false</externalId>
+    <label>Total Function Points</label>
+    <summarizedField>User_Story__c.Points_Effort_Number__c</summarizedField>
+    <summaryForeignKey>User_Story__c.Epic__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

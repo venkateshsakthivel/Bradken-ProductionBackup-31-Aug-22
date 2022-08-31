@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sprint_3_User_Story_Kanban</fullName>
+    <columns>NAME</columns>
+    <columns>Sprint__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sprint__c</field>
+        <operation>equals</operation>
+        <value>Sprint 3</value>
+    </filters>
+    <label>Sprint 3 User Story - Kanban</label>
+</ListView>

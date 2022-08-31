@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dated_Exchanged_Rate_to_Quote_Currency__c</fullName>
+    <description>Dated exchange rate required to convert the Product Cost AUD converted to Quote Currency. Populated via flow when Product cost is populated from ECL form submission</description>
+    <externalId>false</externalId>
+    <label>Dated Exchanged Rate to Quote Currency</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>6</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

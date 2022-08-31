@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Patrick_s_Gurgel_invoice</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Debtors_Bucket_Label_2__c</columns>
+    <columns>Debtors_Bucket_Label_3__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>New,Due Within 7 Days,Overdue - Unexplained,Awaiting Customer Response,Customer Dispute Quality,Customer Dispute Payment Terms,Payment Date Confirmed</value>
+    </filters>
+    <label>Patrick´s Gurgel invoice</label>
+</ListView>

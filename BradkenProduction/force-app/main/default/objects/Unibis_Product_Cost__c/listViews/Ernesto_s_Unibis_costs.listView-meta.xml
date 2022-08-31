@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ernesto_s_Unibis_costs</fullName>
+    <columns>NAME</columns>
+    <columns>Part_Number__c</columns>
+    <columns>Supply_Warehouse__c</columns>
+    <columns>Cost__c</columns>
+    <columns>Last_Updated_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Part_Number__c</field>
+        <operation>equals</operation>
+        <value>1952-202-01B</value>
+    </filters>
+    <label>Ernesto&apos;s Unibis costs</label>
+</ListView>

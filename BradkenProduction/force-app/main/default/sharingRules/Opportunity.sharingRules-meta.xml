@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Share_Opp_with_CSC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Opp with CSC</label>
+        <sharedTo>
+            <group>Customer_Service_Coordinators</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Opp_with_Darren_S</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Opp with Darren S</label>
+        <sharedTo>
+            <role>Account_Manager_Darren_Smith</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sales_Manager_Steve_Mackay</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Opp_with_Graham_K</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Opp with Graham K</label>
+        <sharedTo>
+            <role>RSM_Graham_Kennedy</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sales_Manager_Steve_Mackay</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Opps_with_Rachel</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share Opps with Rachel (acting as CSC and Super User). Temporary access. To be removed later.</description>
+        <label>Share Opps with Rachel</label>
+        <sharedTo>
+            <role>Account_Manager_Rachel_Taylor</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sales_Manager_Brett_Hainsworth</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_opp_with_Cachet</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share opp with Cachet</label>
+        <sharedTo>
+            <role>Cachet_Roberts</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sales_Manager_Len_Wattamaniuk</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_opp_with_Myra</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Myra has access to all records for Jason&apos;s team</description>
+        <label>Share opp with Myra</label>
+        <sharedTo>
+            <role>Account_Manager_Myra_Myers</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Business_Development_Manager_Jason_Lunn</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

@@ -1,0 +1,22 @@
+<aura:component >
+    <aura:attribute name="title" type="string" />  
+    <aura:attribute name="footers" type="Aura.Component[]" /> 
+    <aura:attribute name="headers" type="Aura.Component[]" />     
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container c-modal">
+            <header class="slds-modal__header modal-header">
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.title}</h2>
+				{!v.headers}
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <p></p>
+                {!v.body}
+            </div>
+            <footer class="slds-modal__footer modal-footer slds-modal__footer_directional">
+                {!v.footers}
+            </footer>
+        </div>
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</aura:component>

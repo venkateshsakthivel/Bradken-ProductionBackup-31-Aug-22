@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>angga_s_outstanding_invoices</fullName>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <label>angga&apos;s outstanding invoices</label>
+</ListView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ((TEXT(Value__c) = &quot;Nice to Have&quot; || TEXT(Value__c) = &quot;Could Have&quot;),
+IF ( Points_Effort_Number__c &gt;= 13, IMAGE(&quot;/resource/Red_Flag2&quot;, &quot;Red&quot;, 25, 25)&amp;&quot; Extravagance&quot;,
+IF ( Points_Effort_Number__c &gt;= 5 &amp;&amp; Points_Effort_Number__c &lt;=8, IMAGE(&quot;/resource/Red_Flag2&quot;, &quot;Red&quot;, 25, 27)&amp;&quot; Luxury&quot;,
+IF ( Points_Effort_Number__c &lt;= 3, IMAGE(&quot;/resource/Yellow_Flag&quot;, &quot;Yellow&quot;, 25, 27)&amp;&quot; Low Priority&quot;, null))),
+IF ((TEXT(Value__c) = &quot;Should Have&quot; || TEXT(Value__c) = &quot;Must Have&quot;),
+IF ( Points_Effort_Number__c &gt;= 13, IMAGE(&quot;/resource/Blue_Flag&quot;, &quot;Blue&quot;, 25, 27) &amp; &quot; Strategic&quot;,
+IF ( Points_Effort_Number__c &gt;= 5 &amp;&amp; Points_Effort_Number__c &lt;=8, IMAGE(&quot;/resource/Green_Flag2&quot;, &quot;Green&quot;, 25, 27)&amp;&quot; Medium Priority&quot;,
+IF ( Points_Effort_Number__c &lt;= 3, IMAGE(&quot;/resource/Green_Flag2&quot;, &quot;Green&quot;, 25, 27)&amp;&quot; High Priority&quot;, null))),null))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>What is the overall priority of this? Calculated from Points (Effort) and Value. Extravagance &gt;&gt; Luxury &gt;&gt; Strategic &gt;&gt; Low Priority &gt;&gt; Medium Priority &gt;&gt; High Priority</inlineHelpText>
+    <label>Priority</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

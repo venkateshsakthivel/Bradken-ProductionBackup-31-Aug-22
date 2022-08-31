@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_invoices1</fullName>
+    <columns>NAME</columns>
+    <columns>Debtors_Bucket_Label_5__c</columns>
+    <columns>Debtors_Bucket_Label_3__c</columns>
+    <columns>Debtors_Bucket_Label_4__c</columns>
+    <columns>Debtors_Bucket_Label_2__c</columns>
+    <columns>UnibisSalesOrderHyperlink__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <columns>TotalInvoiceAmount__c</columns>
+    <columns>Status__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>ExpectedPaymentDate__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>PurchaseOrder__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>yegor melnichenko</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>New,Due Within 7 Days,Overdue - Unexplained</value>
+    </filters>
+    <label>Open invoices YM</label>
+</ListView>

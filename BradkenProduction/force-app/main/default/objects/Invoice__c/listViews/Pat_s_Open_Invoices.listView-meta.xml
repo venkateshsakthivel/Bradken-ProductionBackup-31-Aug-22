@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pat_s_Open_Invoices</fullName>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Debtors_Bucket_Label_3__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Debtors_Bucket_Label_5__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Pat&apos;s Open Invoices</label>
+</ListView>

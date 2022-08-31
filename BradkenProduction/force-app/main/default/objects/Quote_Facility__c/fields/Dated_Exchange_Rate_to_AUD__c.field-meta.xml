@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dated_Exchange_Rate_to_AUD__c</fullName>
+    <description>Dated exchange rate required to convert the Quote Facility Currency back to AUD (corporate)</description>
+    <externalId>false</externalId>
+    <label>Dated Exchange Rate to AUD</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>6</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

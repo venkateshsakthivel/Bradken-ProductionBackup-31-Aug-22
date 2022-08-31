@@ -1,0 +1,39 @@
+.THIS{
+    padding-left:1em;
+}
+.THIS .editorActions {
+	position: fixed;
+    left: 0;
+    bottom: 3em;
+    width: 100%;
+    padding: .5rem 1rem;
+    text-align: center;
+    background-color: rgb(243, 242, 242);
+    border-top: 2px solid rgb(221, 219, 218);
+    z-index:9
+}
+
+.THIS.productsearchBox{
+    top:2.7rem !important;
+    position: fixed;
+    width: 100%;
+    background-color:white;
+    z-index: 10;
+    padding-right: 2rem !important;
+}
+.THIS.warehouseSearchBox{
+    top:2.7rem !important;
+    bottom: 2.7rem !important;
+    position: fixed;
+    width: 100%;
+    background-color:white;
+    z-index: 10;
+    padding-right: 2rem !important;
+}
+.THIS.qliTable{
+    padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+.THIS .ConfirmUpdateAllModal{
+    float: none !important;
+}

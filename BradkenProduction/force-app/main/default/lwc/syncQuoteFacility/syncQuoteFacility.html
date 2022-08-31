@@ -1,0 +1,25 @@
+<template>
+	<div style="display: flex;">
+		<div class="slds-size_1-of-4"></div>
+		<div class="slds-size_2-of-4" style="min-width: 400px;">
+			<lightning-card title="Confirmation">
+				<template for:each={selectedQuoteFacilities} for:item="quoteFacility">
+					<div key={quoteFacility.Id}>
+						<ul class="slds-var-m-around_medium">
+							<li>Confirming the following information will be synced to Quote Line Product: {quoteFacility.Bradken_Part_Number__c}</li>
+							<li > Supplier Record: {quoteFacility.Name}</li>
+							<li > Supplier Name: {quoteFacility.Facility_Name__c}</li>
+							<li > Lead Time: {quoteFacility.Lead_Time__c}</li>
+							<li > Product Cost: {quoteFacility.Converted_Product_Cost__c}</li>
+						</ul>
+					</div>
+				</template>
+			</lightning-card>
+			<div style="float: right; margin-top: 15px; margin-right: 15px;">
+				<lightning-button variant="brand" label="Confirm" onclick={handleNext} class="slds-m-left_x-small"></lightning-button>
+			</div>
+		</div>
+		<div class="slds-size_1-of-4"></div>
+	</div>
+    
+</template>

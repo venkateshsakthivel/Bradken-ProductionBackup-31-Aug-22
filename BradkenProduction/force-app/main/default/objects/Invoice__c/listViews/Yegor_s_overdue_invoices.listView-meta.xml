@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Yegor_s_overdue_invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>PurchaseOrder__c</columns>
+    <columns>Status__c</columns>
+    <columns>UnibisOrderNumber__c</columns>
+    <columns>UnibisSalesOrderHyperlink__c</columns>
+    <columns>PaidDate__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Debtors_Bucket_Label_2__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Yegor`s overdue invoices</label>
+</ListView>

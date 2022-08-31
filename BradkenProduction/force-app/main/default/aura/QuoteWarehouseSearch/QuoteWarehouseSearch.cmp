@@ -1,0 +1,90 @@
+<!--
+  @description       : 
+  @author            : TQDev
+  @group             : 
+  @last modified on  : 09-11-2020
+  @last modified by  : TQDev
+  Modifications Log 
+  Ver   Date         Author   Modification
+  1.0   09-10-2020   TQDev   Initial Version
+-->
+<aura:component controller="QuoteLineEditorController">
+    <!--Attributes-->
+    <aura:attribute name="supplierId" type="String" default=""/>
+    <aura:attribute name="despatchWarehouseId" type="String" default=""/>
+    <aura:attribute name="selectedWarehouse" type="Warehouse__c" default="{}"/>
+    <aura:attribute name="selectedIndex" type="Integer" />
+    <!--<aura:attribute name="disabled" type="boolean" default="TRUE"/>-->
+    <aura:attribute name="isConfirmModalOpen" type="boolean" default="false"/>
+    <aura:registerEvent name="QuoteLineEditorEvent" type="c:QuoteLineEditorEvent"/>
+
+    <!--Search Box-->
+    <div class="slds-border_bottom">
+        <div class="slds-border_left">
+            <div class="slds-border_right" >
+                <lightning:layout horizontalAlign="spread" multipleRows="true" class="slds-border_top" verticalAlign="centre" title="Warehouse Selection">
+                    <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1">
+                        <!--spacing-->
+                    </lightning:layoutItem>
+                    <!--label-->
+                    <lightning:layoutItem flexibility="auto" size="11" smallDeviceSize="11" mediumDeviceSize="11" largeDeviceSize="11">
+                        <label class="slds-form-element__label">Warehouse Selection</label>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1">
+                        <!--spacing-->
+                    </lightning:layoutItem>
+                    <!--Supplier lookup-->
+                    <lightning:layoutItem flexibility="auto" size="4" smallDeviceSize="4" mediumDeviceSize="4" largeDeviceSize="4" >
+                        <lightning:input aura:id="supplierInput"
+                                        name="supplierInput" 
+                                        type="test"
+                                        fieldLevelHelp="Enter either a vendor warehouse, stock warehouse or external vendor code"
+                                        placeholder="Enter Supplier"
+                                        value="{!v.supplierId}"
+                                        label="Supplier"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" size="1" smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1">
+                        <!--spacing-->
+                    </lightning:layoutItem>
+                    <!--despatchWarehouse lookup-->
+                    <lightning:layoutItem flexibility="auto" size="4" smallDeviceSize="4" mediumDeviceSize="4" largeDeviceSize="4" >
+                        <!--<lightning:input aura:id="warehouseInput"
+                                        name="warehouseInput"
+                                        type="search"
+                                        placeholder="Despatch Warehouse"
+                                        value="{!v.despatchWarehouseId}"
+                                        onchange="{!c.handleInput}"/>-->
+                        <lightning:recordEditForm aura:id="recordEditForm" objectApiName="QuoteLineItem">
+                            <lightning:inputField aura:id="warehouseLookup" label="" fieldName="Despatch_Warehouse__c" onchange="{!c.handleWarehouseSelect}"/>
+                        </lightning:recordEditForm>
+                    </lightning:layoutItem>
+                    <!--update all button-->
+                    <lightning:layoutItem flexibility="auto" size="2" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2" class="updateAllButton">
+                        <lightning:button aura:id="updateAll" variant="brand" label="{!$Label.c.QuoteLineEditor_UpdateWarehouse_Button}"  name="updateAllButton" onclick="{!c.handleUpdateAll}"/>
+                    </lightning:layoutItem>
+                        <!--spacing-->
+                </lightning:layout>
+            </div>
+        </div>
+    </div>
+    <aura:if isTrue="{!v.isConfirmModalOpen}">
+        <c:ModalContent>
+            <aura:set attribute="headers">
+                Are you sure?
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button variant="neutral" 
+                                  class="slds-var-p-horizontal_large"
+                                  label="Cancel" 
+                                  title="Cancel" 
+                                  onclick="{!c.handleNoConfirm}" />
+                <lightning:button variant="brand" 
+                                  class="slds-var-p-horizontal_large"
+                                  label="Confirm" 
+                                  title="Confirm" 
+                                  onclick="{!c.handleYesConfirm}" />
+            </aura:set>
+            {!$Label.c.QuoteLineEditor_UpdateWarehouse_Message}        
+        </c:ModalContent>
+    </aura:if>
+</aura:component>

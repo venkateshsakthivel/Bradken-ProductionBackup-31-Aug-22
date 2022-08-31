@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <submitter>Quote_Submitters</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Account</field>
+        <field>On_Behalf_Of__c</field>
+        <field>Total_Cost_Price_excl_FTP__c</field>
+        <field>Total_Sell_Price_excl_FTP__c</field>
+        <field>Margin_Amount_excl_FTP__c</field>
+        <field>Margin_Percentage_excl_FTP__c</field>
+        <field>Total_Cost_Price_FTP__c</field>
+        <field>Total_Sell_Price_FTP__c</field>
+        <field>Margin_Amount_FTP__c</field>
+        <field>Margin_Percentage_FTP__c</field>
+        <field>Total_Cost_Price_incl_FTP__c</field>
+        <field>Total_Sell_Price_incl_FTP__c</field>
+        <field>Total_Margin_Amount__c</field>
+        <field>Total_Margin_Percentage__c</field>
+        <field>Internal_Comments__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>On_Behalf_Of__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Owner for Approval</description>
+        <label>Assign to Owner</label>
+        <name>Assign_to_Owner</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>sburgoyne@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Product Development Manager if Non-Standard Warranty or Modified Process or Design</description>
+        <entryCriteria>
+            <booleanFilter>1 OR 2 OR 3</booleanFilter>
+            <criteriaItems>
+                <field>Quote.Non_Standard_Warranty__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Production Development Manager Approval</label>
+        <name>Production_Development_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>rdonges@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Operations Manager for approval if Multiple Facilities selected on the Quote</description>
+        <entryCriteria>
+            <booleanFilter>((1 OR 2) AND 4) OR (3 AND 4)</booleanFilter>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Non_standard_Lead_Time_Required__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Facility_Count__c</field>
+                <operation>greaterThan</operation>
+                <value>1</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Operations Manager Approval</label>
+        <name>Operations_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Facility_Manager__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Manufacturing / Facility Manager if only one  facility is selected on the Quote</description>
+        <entryCriteria>
+            <booleanFilter>((1 OR 2) AND 4) OR (3 AND 4)</booleanFilter>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Design__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.New_or_Modified_Process__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Non_standard_Lead_Time_Required__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Facility_Count__c</field>
+                <operation>equals</operation>
+                <value>1</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Facility/Manufacturing Manager Approval</label>
+        <name>Facility_Manufacturing_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>jbone@bradken.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Assign to Commercial Manager for Approval if New Customer or Unapproved Payment Terms</description>
+        <entryCriteria>
+            <booleanFilter>1 OR 2 OR 3</booleanFilter>
+            <criteriaItems>
+                <field>Quote.New_Customer__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Unapproved_Non_Std_Payment_Terms__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Quote.Non_standard_T_Cs__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Commercial Manager Approval</label>
+        <name>Commercial_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Owners_Manager__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Level 1</description>
+        <entryCriteria>
+            <formula>IF ( Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode))  &gt; On_Behalf_Of__r.Approval_Limit__c , TRUE, FALSE)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 2</description>
+        <entryCriteria>
+            <formula>IF ( Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c , TRUE, FALSE)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 3</description>
+        <entryCriteria>
+            <formula>IF ( Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c , TRUE, FALSE)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 4</description>
+        <entryCriteria>
+            <formula>IF ( Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c , TRUE, FALSE)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver4</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 6</description>
+        <entryCriteria>
+            <formula>IF ( Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c , TRUE, FALSE)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Next Approver</label>
+        <name>Next_Approver6</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Level 7</description>
+        <entryCriteria>
+            <formula>IF ( Total_Sell_Price_incl_FTP__c/CURRENCYRATE(TEXT(CurrencyIsoCode)) &gt; $User.Approval_Limit__c , TRUE, FALSE)</formula>
+        </entryCriteria>
+        <label>Next Approver</label>
+        <name>Next_Approver7</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Approval Process for Customer Quote created by Sales users within the &apos;ANZ Speciality Products&apos; BU</description>
+    <emailTemplate>Quote_Email/Quote_Notification</emailTemplate>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND
+(
+  OR
+  (
+    TEXT(Status) = &quot;Value Proposition&quot;,
+    TEXT(Status) = &quot;Estimating&quot;,
+    TEXT(Status) = &quot;New&quot;
+  ),
+  Business_Unit__c = &quot;ANZ Specialty Products&quot;,
+  NOT(CONTAINS(On_Behalf_Of__r.UserRole.Name, &quot;Customer Service&quot;)),
+  Total_Sell_Price_incl_FTP__c &gt; 0
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Final_Approval_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Populate_Estimating_Finished_date</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Quote_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Quote_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Rejection_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Update_Quote_Rejection_Reason</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>true</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Populate_Estimating_Finished_datev2</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Populated_Submitted_For_Approval_Date</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Quote_Approval_Pending</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Quote Approval ANZ Speciality Products</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,76 @@
+.THIS.qli-table-headertext{
+    /*position: fixed!important;*/
+    /*top: 6rem!important;*/
+    z-index: 9!important;
+    background: white!important;
+    width: 100%!important;
+    /* border: 0.5px solid red; */
+    padding: -3rem!important;
+    padding-top: 1.5rem!important;
+    padding-bottom: 0.5rem!important;
+}
+.THIS.qlitablecontainer {
+    /*padding-top: 2rem !important;*/
+    overflow: scroll !important;
+    position: relative !important;
+	max-height: 26rem !important;
+    padding-bottom:5em !important;
+}
+
+.THIS .fixedCol{
+    position: fixed !important;
+    top: 9rem !important;
+    z-index: 4!important;
+    background: white!important;
+    padding: .25em!important;
+    width: auto;
+    left: 0rem !important;
+}
+
+.THIS .stickyCol{
+	background: white !important;
+    z-index: 3 !important;
+}
+.THIS.qlitablecontainer table {
+    position: relative !important;
+    border-collapse: collapse !important;
+}
+
+.THIS.qlitablecontainer td,.THIS.qlitablecontainer th {
+    padding: 0.25em !important;
+}
+
+.THIS.qlitablecontainer thead th {
+    position: -webkit-sticky !important; /* for Safari */
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 3 !important;
+    background: white !important;
+}
+
+.THIS.doRightPad{
+    padding-right: 2rem !important;
+}
+.THIS.qlitablecontainer tbody th {
+    position: -webkit-sticky !important; /* for Safari */
+    position: sticky !important;
+    left: 0 !important;
+}
+@media only screen and (min-width: 90em) {
+    .THIS.qlitablecontainer {
+        /*max-width: 90rem;*/
+    }
+}
+@media only screen and (min-width: 120em) {
+    .THIS.qlitablecontainer {
+    	/*max-width: 120rem;*/
+    }
+}
+@media only screen and (min-height: 50em) {
+    .THIS.qlitablecontainer {
+        /*padding-top: 2rem !important;*/
+        max-height: 44em !important;
+        overflow: scroll !important;
+        position: relative !important;
+    }
+}

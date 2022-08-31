@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paid_Invoice_Modification_not_allowed</fullName>
+    <active>true</active>
+    <description>Do not allow users to modify a Paid invoice</description>
+    <errorConditionFormula>AND
+(
+    RecordLocked__c,
+    $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+    $Profile.Name &lt;&gt; &apos;Integration&apos;
+)</errorConditionFormula>
+    <errorMessage>Paid Invoice cannot be modified</errorMessage>
+</ValidationRule>

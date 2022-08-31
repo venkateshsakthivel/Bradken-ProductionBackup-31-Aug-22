@@ -1,0 +1,207 @@
+<!-- AddPONumber -->
+<aura:component implements="force:lightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,lightning:isUrlAddressable" 
+                controller="PurchaseOrderController" 
+                access="global" >
+    <aura:attribute name="selectAllPol" type="boolean" default="false" />
+    <aura:attribute name="init" type="boolean" default="false" />
+    <aura:attribute name="showConfirm" type="boolean" default="false" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="po_warehouse" type="String" default="" />
+    <aura:attribute name="po_number" type="String" default="" />
+    <aura:attribute name="pol_objectinfo" type="object" />
+    <aura:attribute name="po_status" type="String" />
+    <aura:attribute name="po" type="Customer_Purchase_Order__c" 
+                    default="{'sobjectType':'Customer_Purchase_Order__c'}"/>
+    <aura:attribute name="purchaseOrderLines" type="Purchase_Order_Line_Item__c[]" default="[]" />
+    <aura:attribute name="fieldsToCopy" type="List" default="[]" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:workspaceAPI aura:id="workspace" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:navigation aura:id="navService"/>
+    
+    <div aura:id="mySpinner" class="slds-spinner_container slds-hide">
+        <lightning:spinner alternativeText="Loading..." variant="brand" size="medium" style="background:transparent" />
+    </div>
+    <lightning:card>
+        <aura:if isTrue="{!v.purchaseOrderLines.length != 0}">
+            <lightning:recordEditForm objectApiName="Customer_Purchase_Order__c">
+                <lightning:layout >
+                    <lightning:layoutItem size="5">
+                        <lightning:inputField fieldName="Name" 
+                                              required="true" 
+                                              class="po_name" 
+                                              variant="label-stacked"
+                                              onchange="{!c.handleChange}" />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="1"></lightning:layoutItem>
+                    <lightning:layoutItem size="5">
+                        <lightning:inputField fieldName="Despatch_Warehouse__c" 
+                                              required="false" 
+                                              class="po_warehouse" 
+                                              variant="label-stacked"
+                                              onchange="{!c.handleChange}"  />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="1"></lightning:layoutItem>
+                </lightning:layout>
+            </lightning:recordEditForm>
+            
+            <div class="slds-table slds-table_cell-buffer tablecontainer">
+                <lightning:layout >
+                    <lightning:layoutItem size="3">
+                        <lightning:input value="{!v.selectAllPol}"
+                                         label="Select All" 
+                                         type="checkbox"
+                                         aura:id="selectAllPol"
+                                         class="selectAllPol"
+                                         onchange="{!c.handleChange}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6"></lightning:layoutItem>
+                </lightning:layout>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="fixedCol">
+                                <div>{!$Label.c.PO_Col_LineItemNumber}</div>
+                            </th>
+                            <th scope="col" class="fixedCol">
+                                <div>
+                                    {!$Label.c.PO_Col_ProductName}
+                                </div>
+                            </th>
+                            <th scope="col" class="fixedCol"> 
+                                <div>
+                                    {!$Label.c.PO_Col_Quantity}	
+                                </div>
+                            </th>
+                            <th scope="col" class="fixedCol"> 
+                                <div>
+                                    {!$Label.c.PO_Col_Available}	
+                                </div>
+                            </th>
+                            <th scope="col" class="fixedCol"> 
+                                <div>
+                                    {!$Label.c.PO_Col_OrderQuantity}
+                                </div>
+                            </th>
+                            <th scope="col" class="fixedCol"> 
+                                <div>
+                                    {!$Label.c.PO_Col_DespatchWarehouse}
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.purchaseOrderLines}" var="pol" indexVar="idx" >
+                            <tr>
+                                <td>
+                                    <div>
+                                        {!pol.oli.LineItemNumber__c}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        {!pol.oli.Bradken_Part_Number__c}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        {!pol.oli.Quantity}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        {!pol.oli.AvailableQuantity__c}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="width:5em;">
+                                        <lightning:input value="{!pol.Quantity__c}"
+                                                         label="Quantity" 
+                                                         variant="label-hidden"
+                                                         type="number"
+                                                         step="1"
+                                                         min="0"
+                                                         max="{!pol.oli.AvailableQuantity__c}"
+                                                         aura:id="pol_quantity"
+                                                         class="pol_quantity"/>            
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="width:18em;">
+                                        <lightning:recordEditForm class="{!'pol_warehouse_form_'+idx}" onload="{!c.handleLoad}"  objectApiName="Purchase_Order_Line_Item__c">
+                                            <lightning:inputField required="true" 
+                                                                  variant="label-hidden" 
+                                                                  aura:id="pol_warehouse" 
+                                                                  class="{!'pol_warehouse_'+idx}" 
+                                                                  fieldName="DespatchWarehouse__c" 
+                                                                  onchange="{!c.handleChange}"  />
+                                        </lightning:recordEditForm>
+                                    </div>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </aura:if>
+        <div aura:id="PO_No_OpportunityLines_Message" class="slds-hide">
+            {!$Label.c.PO_No_OpportunityLines_Message}
+        </div>
+        <div aura:id="PO_No_UNIBIS_Account" class="slds-hide">
+            {!$Label.c.PO_No_UNIBIS_Account}
+        </div>
+        <aura:set attribute="footer">
+            <div class="footerActions">
+                <aura:if isTrue="{!v.purchaseOrderLines.length == 0}">
+                    <aura:if isTrue="{!!v.showConfirm}">
+                        
+                        <lightning:button variant="neutral" 
+                                          label="{!$Label.c.PO_Cancel_Button}" 
+                                          title="{!$Label.c.PO_Cancel_Button}" 
+                                          class="slds-p-horizontal_large"
+                                          onclick="{!c.handleCancel}" />
+                    </aura:if>
+                </aura:if>
+                <aura:if isTrue="{!v.purchaseOrderLines.length != 0}">
+                    <aura:if isTrue="{!!v.showConfirm}">
+                        <lightning:button variant="neutral" 
+                                          label="{!$Label.c.PO_Cancel_Button}" 
+                                          title="{!$Label.c.PO_Cancel_Button}" 
+                                          class="slds-p-horizontal_large"
+                                          onclick="{!c.handleCancel}" />
+                        <lightning:button variant="brand" 
+                                          label="{!$Label.c.PO_Save_Button}" 
+                                          title="{!$Label.c.PO_Save_Button}" 
+                                          class="slds-p-horizontal_large"
+                                          onclick="{!c.handleValidate}" />
+                    </aura:if>
+                </aura:if>
+            </div>
+        </aura:set>
+    </lightning:card>
+    
+    <!-- Modal -->
+    <aura:if isTrue="{!v.showConfirm}">
+        <c:ModalContent>
+            <aura:set attribute="headers">
+                {!$Label.c.PO_Confirm_Header}
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button variant="neutral" 
+                                  class="slds-p-horizontal_large"
+                                  label="{!$Label.c.PO_Cancel_Confirm_Button}" 
+                                  title="{!$Label.c.PO_Cancel_Confirm_Button}" 
+                                  onclick="{!c.handleCancelConfirm}" />
+                <lightning:button variant="brand" 
+                                  class="slds-p-horizontal_large"
+                                  label="{!$Label.c.PO_Save_Confirm_Button}" 
+                                  title="{!$Label.c.PO_Save_Confirm_Button}" 
+                                  onclick="{!c.handleSaveConfirm}" />
+            </aura:set>
+            {!$Label.c.PO_Confirm_Message}
+        </c:ModalContent>
+    </aura:if>
+</aura:component>

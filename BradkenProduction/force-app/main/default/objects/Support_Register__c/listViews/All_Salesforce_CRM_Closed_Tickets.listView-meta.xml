@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Salesforce_CRM_Closed_Tickets</fullName>
+    <columns>NAME</columns>
+    <columns>Subject__c</columns>
+    <columns>Currently_With__c</columns>
+    <columns>Status__c</columns>
+    <columns>Priority_Flag__c</columns>
+    <columns>Date_Closed__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Closed</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Support_Register__c.Salesforce_CRM</value>
+    </filters>
+    <label>Salesforce CRM Closed Tickets</label>
+</ListView>

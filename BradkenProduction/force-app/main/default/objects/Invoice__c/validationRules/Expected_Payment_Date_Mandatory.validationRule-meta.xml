@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_Payment_Date_Mandatory</fullName>
+    <active>true</active>
+    <description>Expected Payment Date is mandatory when the invoice status is updated to &apos;Payment Date Confirmed&apos;</description>
+    <errorConditionFormula>AND
+(
+    ISPICKVAL(Status__c , &apos;Payment Date Confirmed&apos;),
+    ISBLANK(ExpectedPaymentDate__c)
+)</errorConditionFormula>
+    <errorMessage>Please enter Payment Date confirmed by the Customer</errorMessage>
+</ValidationRule>

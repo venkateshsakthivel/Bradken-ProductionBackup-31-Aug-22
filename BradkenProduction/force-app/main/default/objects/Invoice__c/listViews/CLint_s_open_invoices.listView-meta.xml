@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLint_s_open_invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Status__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalOutstandingAmountAUD__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>New,Due Within 7 Days,Overdue - Unexplained,Awaiting Customer Response,Customer Dispute Quality,Customer Dispute Payment Terms,Payment Date Confirmed</value>
+    </filters>
+    <filters>
+        <field>HistoricalSalesRep__c</field>
+        <operation>equals</operation>
+        <value>Clint Russ</value>
+    </filters>
+    <label>CLint&apos;s open invoices</label>
+</ListView>

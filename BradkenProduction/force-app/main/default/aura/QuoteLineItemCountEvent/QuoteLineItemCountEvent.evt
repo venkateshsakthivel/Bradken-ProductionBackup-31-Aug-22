@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Event to handle disabling of warehouse search">
+    <aura:attribute name="disableWarehouseSearch" type="boolean"/>
+</aura:event>

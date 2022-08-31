@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Washington_s_Open_Invoice_s</fullName>
+    <columns>NAME</columns>
+    <columns>DueDate__c</columns>
+    <columns>TotalInvoiceAmountAUD__c</columns>
+    <columns>InternalComments__c</columns>
+    <columns>Unibis_Account_Number__c</columns>
+    <columns>Account__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>contains</operation>
+        <value>Washington Munetsi,Shane Bennett</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>notContain</operation>
+        <value>NEWMONT</value>
+    </filters>
+    <label>Washington&apos;s Open Invoice&apos;s</label>
+</ListView>

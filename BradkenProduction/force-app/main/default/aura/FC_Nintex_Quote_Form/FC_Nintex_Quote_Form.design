@@ -1,0 +1,6 @@
+<design:component>
+	<design:attribute name="formURL" label="Form URL" required="true"/>
+    <design:attribute name="recordIdParam" label="Record ID Parameter Name" description="This is the name of the parameter from your Nintex Workflow Cloud form. This value would be declared in the getQueryStringParameter() function."/>
+    <design:attribute name="width" label="Width"/>
+    <design:attribute name="height" label="Height"/>
+</design:component>

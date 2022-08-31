@@ -1,0 +1,107 @@
+<!-- QuoteLineTable -->
+<aura:component controller="QuoteLineEditorController">
+    <!-- Attibutes -->
+    
+    <aura:attribute name="quote" type="Quote" default=""/>
+    <aura:attribute name="quoteLineItemsToDelete" type="QuoteLineItem[]" default="[]"/>
+    <aura:attribute name="selectedProducts" type="list" default="[]"/>
+    <aura:attribute name="quoteLineItems" type="QuoteLineItem[]" default="[]"/>
+    <aura:attribute name="quoteLineEditorConfig" type="List" default="[]"/>
+    <aura:attribute name="quoteLineFieldDescribe" type="List" default="[]"/>
+    <aura:attribute name="selectedColumns" type="List" default="[]"/>
+    <aura:attribute name="warehouse" type="Warehouse__c" default="[]"/>
+    <aura:attribute name="supplier" type="String" default=""/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+
+    <!-- Actions -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:method name="quoteLineTableAction" action="{!c.doAction}" >
+        <aura:attribute name="action" type="String"/>
+        <aura:attribute name="payload" type="String"/>
+    </aura:method>
+
+    <aura:handler name="QuoteLineEditorEvent" event="c:QuoteLineEditorEvent" 
+                  action="{!c.doAction}"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:registerEvent name="QuoteLineEditorEvent" type="c:QuoteLineEditorEvent"/>
+    <aura:registerEvent name="QuoteLineItemCountEvent" type="c:QuoteLineItemCountEvent"/>
+    
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+    <!--markup -->  
+    <aura:if isTrue="{!and(v.quoteLineFieldDescribe.length > 0,v.quoteLineEditorConfig.length > 0)}">
+        <lightning:layout horizontalAlign="spread" multipleRows="true" class="qli-table-headertext">
+            <lightning:layoutItem flexibility="auto" size="2" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2" >
+                <aura:if isTrue="{!v.quoteLineItems.length > 0}">
+                    {!$Label.c.QuoteLineEditor_QuoteLineItem}: <b>{!v.quoteLineItems.length}</b>
+                </aura:if>
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" size="2" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2" >
+                <aura:if isTrue="{!v.quoteLineItems.length > 0}">
+                    Opportunity Currency: <b>{!v.quote.Opportunity.CurrencyIsoCode}</b>
+                </aura:if>
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" size="6" smallDeviceSize="8" mediumDeviceSize="8" largeDeviceSize="8" >
+                <aura:if isTrue="{!v.quoteLineItems.length > 0}">
+                    
+                </aura:if>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <aura:if isTrue="{!v.quoteLineItems.length > 0}">
+            <!--slds-table slds-table_cell-buffer slds-table_bordered slds-tasble_striped-->
+            <div class="qlitablecontainer slds-table slds-table_cell-buffer">
+                <table>
+                    <thead>
+                        <tr>
+                            <!--th class="stickyCol fixedCol" style="z-index: 4 !important;" scope="col" >
+                                <div class="slds-truncate">#</div>
+                            </th-->
+                            <th class="stickyCol fixedCol" style="z-index: 10 !important;" scope="col">
+                                <div class="slds-truncate">&nbsp;</div>
+                            </th>
+                            <th class="stickyCol fixedCol" style="z-index: 10 !important;" scope="col">
+                                <div class="slds-truncate">
+                                    {!$Label.c.QuoteLineRow_Table_ProductName}
+                                </div>
+                            </th>
+                            <aura:iteration items="{!v.quoteLineEditorConfig}" var="qf" indexVar="q_idx" >
+                                <aura:if isTrue="{!qf.Display__c != 'Hidden'}">
+                                    <aura:if isTrue="{!qf.DefaultChecked__c}">
+                                        <th class="" scope="col"> 
+                                            <div class="slds-truncate doRightPad">
+                                                <aura:if isTrue="{!qf.Display__c == 'Required'}">
+                                                    <abbr lightning-input_input="" title="required" class="slds-required">*</abbr>
+                                                </aura:if>
+                                                {!qf.ColumName__c}
+                                            </div>
+                                        </th>
+                                    </aura:if>
+                                </aura:if>
+                            </aura:iteration>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.quoteLineItems}" var="quoteline" indexVar="idx" >
+                            <c:QuoteLineRow aura:id="QLR" 
+                                            index="{!idx}" 
+                                            
+                                            quoteline="{!quoteline}"  
+                                            quoteLineEditorConfig="{!v.quoteLineEditorConfig}"
+                                            quoteLineFieldDescribe="{!v.quoteLineFieldDescribe}" 
+                                            selectedColumns="{!v.selectedColumns}"/>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </aura:if>
+    </aura:if>
+    
+</aura:component>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NZL_Site_Visits</fullName>
+    <columns>CREATEDBY_USER</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Contact__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Site_Visit_Secondary_Purpose__c</columns>
+    <columns>Opportunity1__c</columns>
+    <columns>Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>equals</operation>
+        <value>Keith Geenty,Chevy De Bes</value>
+    </filters>
+    <label>NZL Site Visits</label>
+</ListView>

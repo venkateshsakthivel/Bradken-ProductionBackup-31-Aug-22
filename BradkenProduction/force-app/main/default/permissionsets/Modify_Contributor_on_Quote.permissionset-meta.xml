@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>for Sales support and roles that are hybrid</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Quote.Contributor__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Modify Contributor on Quote</label>
+    <recordTypeVisibilities>
+        <recordType>Quote.Approved_Customer_Quote</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Quote.Budget</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Quote.Customer</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+</PermissionSet>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DocumentDate__c</fullName>
+    <description>This is date of creation of the Invoice</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Creation Date</inlineHelpText>
+    <label>Document Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

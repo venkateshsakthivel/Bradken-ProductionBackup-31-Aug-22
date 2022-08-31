@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Thomas_s_Overdue_Invoices1</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>DueDate__c</columns>
+    <columns>Status__c</columns>
+    <columns>SalesRep__c</columns>
+    <columns>TotalInvoiceAmount__c</columns>
+    <columns>InternalComments__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid</value>
+    </filters>
+    <label>Thomas&apos;s Overdue Invoices</label>
+</ListView>

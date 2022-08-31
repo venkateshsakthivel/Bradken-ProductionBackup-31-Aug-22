@@ -1,0 +1,137 @@
+<!-- QuoteLineEditor -->
+<aura:component implements="force:lightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,lightning:isUrlAddressable" 
+                controller="QuoteLineEditorController"
+                access="global" >
+    <!-- Attibutes -->
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="quote" type="Quote" />
+    <aura:attribute name="quoteLineEditorConfig" type="List" default="[]"/>
+    <aura:attribute name="hideModal" type="boolean" default="true"/>
+    <aura:attribute name="hideFieldsToDisplay" type="boolean" default="true"/>
+    <aura:attribute name="fieldOptions" type="list" default="[]"/>
+    <aura:attribute name="selectedFields" type="list" default="[]"/>
+    <aura:attribute name="requiredFields" type="list" default="[]"/>
+    <aura:attribute name="quoteLineFieldDescribe" type="List" default="[]"/>
+    <aura:attribute name="showProductSearch" type="boolean" default="true"/>
+    <aura:attribute name="disableWarehouseSearch" type="boolean" default="TRUE"/>
+    <aura:attribute name="confirmUpdateModal" type="boolean" default="false"/>
+    
+    
+    
+    <!-- Actions -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:method name="quoteLineEditor" action="{!c.doAction}" >
+        <aura:attribute name="type" type="String"/>
+    </aura:method>
+    <aura:handler name="QuoteLineEditorEvent" event="c:QuoteLineEditorEvent" 
+                  action="{!c.doAction}"/>
+    <aura:handler name="QuoteLineItemCountEvent" event="c:QuoteLineItemCountEvent"
+                  action="{!c.handleQLICountEvent}"/>
+    
+    <lightning:workspaceAPI aura:id="workspace" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:navigation aura:id="navService"/>
+
+	<div aura:id="mySpinner" class="slds-spinner_container slds-hide">
+        <lightning:spinner alternativeText="Loading..." variant="brand" size="medium" style="background:transparent" />
+    </div>
+    
+    <!-- markup -->
+    <lightning:card>
+    <aura:if isTrue="{!v.quote}">
+        <div class="productsearchBox">
+            
+
+        <aura:if isTrue="{!v.showProductSearch}" >
+        <c:QuoteProductSearch aura:id="quoteProductSearch" quote="{!v.quote}"></c:QuoteProductSearch>
+        </aura:if>
+        </div>
+        <div class="warehouseSearchBox"  align="middle">
+            <aura:if isTrue="{!v.disableWarehouseSearch ? FALSE : TRUE}">
+                <c:QuoteWarehouseSearch aura:id="quoteWarehouseSearch"/>
+            </aura:if>
+        </div>  
+		<div class="qliTable">
+        <aura:if isTrue="{!v.quoteLineEditorConfig.length > 0}">
+            <c:QuoteLineTable aura:id="quoteLineTable" 
+                              quote="{!v.quote}" 
+                              quoteLineEditorConfig="{!v.quoteLineEditorConfig}" 
+                              quoteLineFieldDescribe="{!v.quoteLineFieldDescribe}">
+            </c:QuoteLineTable>
+        </aura:if>
+        </div>
+	</aura:if>    
+        <!-- Save Button -->
+        <aura:set attribute="footer">
+        <lightning:layout horizontalAlign="center" multipleRows="true" class="editorActions">
+            <lightning:layoutItem flexibility="auto" size="2" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2" >
+                <lightning:button aura:id="fieldsToDisplayBtn" variant="neutral" label="{!$Label.c.QuoteLineEditor_FieldsToDisplay_Button}" onclick="{!c.toggleFieldsToDisplay}" name="fieldsToDisplayBtn" />
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" size="6" smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="6" >
+            </lightning:layoutItem>
+            <!--Update All Button-->
+            <lightning:layoutItem flexibility="auto" size="2" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2">
+                    <lightning:button aura:id="updateAllItems" variant="brand" label="{!$Label.c.QuoteLineEditor_RecalculateCosts_Button}" name="UpdateAll" onclick="{!c.updateAllItems}"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" size="2" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2" >
+				<lightning:button aura:id="saveChanges" variant="brand" label="{!$Label.c.QuoteLineEditor_Save_Button}"  onclick="{!c.saveChanges}" name="saveChanges"/>
+                <lightning:button aura:id="warnCloseEditor" variant="Destructive" label="{!$Label.c.QuoteLineEditor_Cancel_Button}"  onclick="{!c.warnCloseEditor}" name="warnCloseEditor"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        </aura:set>
+
+    <!-- Fields to display Modal-->
+    <aura:if isTrue="{!!v.hideFieldsToDisplay}">
+        <c:ModalContent title="{!$Label.c.QuoteLineEditor_FieldsToDisplay_Button}">
+            <aura:set attribute="headers">
+                
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button aura:id="closeFieldstoDisplay" variant="neutral" label="{!$Label.c.QuoteLineEditor_FieldsToDisplay_Close_Button}"  onclick="{!c.closeModal}" name="closeFieldstoDisplay"/>
+                <lightning:button aura:id="Apply" variant="brand" label="{!$Label.c.QuoteLineEditor_FieldsToDisplay_Apply_Button}"  onclick="{!c.updateSelectedFields}" name="Apply"/>
+            </aura:set>
+            <lightning:input aura:id="SelectAllCols" 
+                                 onchange="{!c.handleFieldSelect}" 
+                                 type="checkbox" 
+                                 label="{!$Label.c.QuoteLineEditor_FieldsToDisplay_SelectAll_Button+' ('+v.fieldOptions.length+')'}" 
+                                 name="SelectAllCols"
+                                 />
+            <lightning:dualListbox name="fieldsToDisplayBox"  
+                                       label= "{!$Label.c.QuoteLineEditor_FieldsToDisplay_Button}" 
+                                       sourceLabel="{!$Label.c.QuoteLineEditor_FieldsToDisplay_Available+' ('+v.fieldOptions.length+')'}" 
+                                       selectedLabel="{!$Label.c.QuoteLineEditor_FieldsToDisplay_Selected+' (' + v.selectedFields.length +'/'+v.fieldOptions.length+')'}" 
+                                       options="{!v.fieldOptions}" 
+                                       value="{!v.selectedFields}"
+                                   	   disableReordering ="true"
+                                       variant="label-hidden"
+                                       requiredOptions="{!v.requiredFields}"
+                                       onchange="{!v.handleFieldSelectChange}"/>            
+        </c:ModalContent>
+    </aura:if>
+    
+    <!-- Modal -->
+    <aura:if isTrue="{!!v.hideModal}">
+        <c:ModalContent title="{!$Label.c.QuoteLineEditor_Header_Warning}">
+            <aura:set attribute="headers">
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button aura:id="closeModal" variant="neutral" label="{!$Label.c.QuoteLineEditor_ExitEditor_No}"  onclick="{!c.closeModal}" name="closeModal"/>
+                <lightning:button aura:id="closeQuickAction" variant="brand" label="{!$Label.c.QuoteLineEditor_ExitEditor_Yes}"  onclick="{!c.closeQuickAction}" name="closeQuickAction"/>
+            </aura:set>
+            {!$Label.c.QuoteLineEditor_ExitEditor_Message}            
+        </c:ModalContent>
+    </aura:if>
+    <aura:if isTrue="{!v.confirmUpdateModal}">
+        <c:ModalContent title="Refresh all Quote Line Items?">
+            {!$Label.c.QuoteLineEditor_RecalculateCosts_Message}        
+            <aura:set attribute="footers">
+                
+                <lightning:button aura:id="ConfirmUpdateAllModal" variant="brand" label="Confirm" class="ConfirmUpdateAllModal" onclick="{!c.updateAllItemsConfirmed}" name="ConfirmUpdateAllModal"/>
+                <lightning:button aura:id="CancelUpdateAllModal" variant="Destructive" label="Cancel"  onclick="{!c.updateAllItemsCancelled}" name="CancelUpdateAllModal"/>
+                
+            </aura:set>
+        </c:ModalContent>
+    </aura:if>
+    </lightning:card>
+</aura:component>

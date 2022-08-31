@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Probable_Opportunity_Present__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether most probable opportunity is present on the Project</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is there any opportunity marked as Most Probable on this Project</inlineHelpText>
+    <label>Most Probable Opportunity Present</label>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

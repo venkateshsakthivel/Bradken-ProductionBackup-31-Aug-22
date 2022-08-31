@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Final_Approval_Email</fullName>
+        <description>Final Approval Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>On_Behalf_Of__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Quote_Email/Quote_Final_Approval</template>
+    </alerts>
+    <alerts>
+        <fullName>Insufficient_Credit</fullName>
+        <description>Insufficient Credit</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>dhartigan@bradken.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>mmcculloch@bradken.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Insufficient_Credit</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Customer</fullName>
+        <description>New Customer</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>dhartigan@bradken.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>mmcculloch@bradken.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/New_Customer</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Customer_For_MMP</fullName>
+        <description>New Customer For MMP</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Commercial_Manager_Jordan_Rankovich</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/New_Customer</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Customer_For_Mineral_Processing</fullName>
+        <description>New Customer For Mineral Processing</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Commercial_Manager_Mineral_Processing</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/New_Customer</template>
+    </alerts>
+    <alerts>
+        <fullName>Quote_PO_Received_Checked</fullName>
+        <description>Quote PO Received &amp; Checked</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contributor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>On_Behalf_Of__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/PO_Recieved_Checked</template>
+    </alerts>
+    <alerts>
+        <fullName>Quote_PO_Received_Checked_MMP_NAM</fullName>
+        <description>Quote PO Received &amp; Checked MMP NAM</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>amolina@bradken.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <field>Contributor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>On_Behalf_Of__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/PO_Recieved_Checked</template>
+    </alerts>
+    <alerts>
+        <fullName>Quote_Rejected_by_Approver</fullName>
+        <description>Quote Rejected by Approver</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contributor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>On_Behalf_Of__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Quote_Rejected_by_Approver</template>
+    </alerts>
+    <alerts>
+        <fullName>Rejection_Email</fullName>
+        <description>Rejection Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>On_Behalf_Of__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Quote_Email/Quote_Rejection</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Fill_In_Submitted_for_Approval_Date</fullName>
+        <field>Submitted_for_Approval_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Fill In Submitted for Approval Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Finished_date</fullName>
+        <field>Estimating_Finished__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Finished date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Finished_date2</fullName>
+        <field>Estimating_Finished__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Finished date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Finished_date3</fullName>
+        <field>Estimating_Finished__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Finished date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Finished_datev2</fullName>
+        <field>Estimating_Finished__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Finished datev2</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Finished_datev3</fullName>
+        <field>Estimating_Finished__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Finished datev3</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Finished_datev4</fullName>
+        <field>Estimating_Finished__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Finished datev4</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Started_date</fullName>
+        <field>Estimating_Started__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Started date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Started_date2</fullName>
+        <field>Estimating_Started__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Started date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Estimating_Started_date3</fullName>
+        <field>Estimating_Started__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Estimating Started date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Submitted_for_Approval_Date</fullName>
+        <field>Submitted_for_Approval_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Submitted for Approval Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populated_Submitted_For_Approval_Date</fullName>
+        <field>Submitted_for_Approval_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Populated Submitted For Approval Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Quote_Approval_Pending</fullName>
+        <description>Change the Quote Status to &apos;Approval Pending&apos; when it is submitted for Approval</description>
+        <field>Status</field>
+        <literalValue>Approval Pending</literalValue>
+        <name>Quote Approval Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Quote_Approval_Status_Approved</fullName>
+        <field>Sub_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Quote Approval Status Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Quote_Approval_Status_Pending</fullName>
+        <field>Sub_Status__c</field>
+        <literalValue>Approval Pending</literalValue>
+        <name>Quote Approval Status Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Quote_Approved</fullName>
+        <description>Update Status of the Quote to &apos;Approved&apos; when the Quote is approved by all intended approvers</description>
+        <field>Status</field>
+        <literalValue>Approved</literalValue>
+        <name>Quote Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Quote_Record_Type_Approved</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Approved_Customer_Quote</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Quote Record Type Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Quote_Rejected</fullName>
+        <description>Update Quote status to &apos;Rejected&apos; when a Quote is rejected by an Approver</description>
+        <field>Status</field>
+        <literalValue>Rejected</literalValue>
+        <name>Quote Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Quote_Rejection_Reason</fullName>
+        <description>update Rejected reason to &apos;Internally Rejected&apos;</description>
+        <field>Rejection_Reason__c</field>
+        <literalValue>Rejected Internally</literalValue>
+        <name>Update Quote Rejection Reason</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Sub_Status_to_Unapproved</fullName>
+        <field>Sub_Status__c</field>
+        <literalValue>Unapproved</literalValue>
+        <name>Update Sub-Status to Unapproved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Site_Visit_Secondary_Purpose__c</fullName>
+    <externalId>false</externalId>
+    <label>Site Visit Secondary Purpose</label>
+    <required>true</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Business Review</fullName>
+                <default>false</default>
+                <label>Business Review</label>
+            </value>
+            <value>
+                <fullName>Commissioning</fullName>
+                <default>false</default>
+                <label>Commissioning</label>
+            </value>
+            <value>
+                <fullName>Innovation Presented</fullName>
+                <default>false</default>
+                <label>Innovation Presented</label>
+            </value>
+            <value>
+                <fullName>Inspection</fullName>
+                <default>false</default>
+                <label>Inspection</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+                <label>Sales Visit</label>
+            </value>
+            <value>
+                <fullName>Training</fullName>
+                <default>false</default>
+                <label>Training</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

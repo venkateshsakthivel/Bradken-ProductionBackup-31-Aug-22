@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kalgoorlie_open_invoices</fullName>
+    <columns>Account__c</columns>
+    <columns>UnibisSalesOrderHyperlink__c</columns>
+    <columns>Status__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>Debtors_Bucket_Label_2__c</columns>
+    <columns>Debtors_Bucket_Label_3__c</columns>
+    <columns>Debtors_Bucket_Label_4__c</columns>
+    <columns>TotalInvoiceAmountAUD__c</columns>
+    <columns>SalesRep__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesRep__c</field>
+        <operation>equals</operation>
+        <value>Graham Kennedy,Darren Smith</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Paid</value>
+    </filters>
+    <label>Kalgoorlie open invoices</label>
+</ListView>

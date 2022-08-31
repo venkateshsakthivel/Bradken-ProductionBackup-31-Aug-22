@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kalgoorlie</fullName>
+    <columns>Account__c</columns>
+    <columns>CFR_Initiator__c</columns>
+    <columns>NAME</columns>
+    <columns>CFR_Link__c</columns>
+    <columns>CFR_Number__c</columns>
+    <columns>Next_to_Action__c</columns>
+    <columns>Next_to_action_comments__c</columns>
+    <columns>CFR_Created_Date__c</columns>
+    <columns>CFR_Status__c</columns>
+    <columns>CFR_Type__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CFR_Status__c</field>
+        <operation>equals</operation>
+        <value>OPEN</value>
+    </filters>
+    <filters>
+        <field>CFR_Initiator__c</field>
+        <operation>equals</operation>
+        <value>Darren Smith,Graham Kennedy,John Kemenade</value>
+    </filters>
+    <label>Kalgoorlie</label>
+</ListView>

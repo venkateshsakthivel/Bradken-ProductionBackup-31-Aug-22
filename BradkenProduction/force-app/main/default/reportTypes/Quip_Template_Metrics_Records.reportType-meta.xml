@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Report to gather metrics based on the Account Plan and Opp Planner</description>
+    <label>Quip Template Metrics Records</label>
+    <sections>
+        <masterLabel>Collaboration Template Metric Records</masterLabel>
+    </sections>
+</ReportType>

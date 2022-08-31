@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>Delete Order Line Item</description>
+    <interviewLabel>Delete Order Line {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Delete Order Line</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <description>Delete the incoming OrderLine</description>
+        <name>Delete_OrderLine</name>
+        <label>Delete OrderLine</label>
+        <locationX>182</locationX>
+        <locationY>50</locationY>
+        <inputReference>OrderLineRecord</inputReference>
+    </recordDeletes>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Delete_OrderLine</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>OrderLineRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderItem</objectType>
+    </variables>
+</Flow>

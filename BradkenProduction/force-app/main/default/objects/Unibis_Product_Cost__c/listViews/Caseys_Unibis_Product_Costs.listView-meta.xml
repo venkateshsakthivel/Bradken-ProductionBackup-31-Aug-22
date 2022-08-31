@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Caseys_Unibis_Product_Costs</fullName>
+    <columns>NAME</columns>
+    <columns>Part_Number__c</columns>
+    <columns>Supply_Warehouse__c</columns>
+    <columns>CURRENCY_ISO_CODE</columns>
+    <columns>Cost__c</columns>
+    <columns>Last_Updated_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Part_Number__c</field>
+        <operation>equals</operation>
+        <value>dbb</value>
+    </filters>
+    <label>Caseys&apos; Unibis Product Costs</label>
+</ListView>

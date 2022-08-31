@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Air_Freight_Quote_Approved</fullName>
+        <description>Air Freight Quote Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Sales_Rep__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Air_Freight_Quote_Approved_1654158153494</template>
+    </alerts>
+    <alerts>
+        <fullName>Air_Freight_Quote_Rejected</fullName>
+        <description>Air Freight Quote Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ssommers@bradken.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Air_Freight_Quote_Rejected_1654158219431</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Update_to_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Update to Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_to_Pending_Approval</fullName>
+        <field>Status__c</field>
+        <literalValue>Pending Approval</literalValue>
+        <name>Update to Pending Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_to_Rejected</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Update to Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_to_Responded</fullName>
+        <field>Status__c</field>
+        <literalValue>Responded</literalValue>
+        <name>Update to Responded</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

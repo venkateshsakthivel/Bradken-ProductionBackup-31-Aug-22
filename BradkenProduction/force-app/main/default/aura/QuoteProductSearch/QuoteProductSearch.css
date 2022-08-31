@@ -1,0 +1,70 @@
+/*.THIS.searchResultBox{
+    max-height: 15rem !important;
+}
+.THIS.selectedProductsBox{
+    max-height: 6rem !important;
+}*/
+.THIS.searchResultHeader{
+    padding: 0.5rem !important;
+}
+.THIS .searchCount{
+	padding: 0.5rem !important;
+
+}
+.THIS.searchResultsContainer{
+    border: 1px solid !important;
+    border-color:rgb(221, 219, 218) !important;
+}
+.THIS.searchResultsContainer, .THIS .searchResultBox,.THIS .selectedProductsBox,.THIS .slds-pill_container{
+    max-height: 15rem !important;
+}
+.THIS .slds-pill_container{
+	border: 0px !important;
+    background-color:transparent!important;
+}
+.THIS .slds-pill{
+    border: 0px !important;
+    /*padding: 0.5rem !important;*/
+    border:0.5px solid !important;
+    border-color:rgb(221, 219, 218) !important;
+}
+.THIS .select-list-helptext{
+   width:0 !important; 
+}
+.THIS .slds-pill .slds-icon-text-default{
+    fill: rgb(194, 57, 52) !important;
+}
+.THIS .slds-pill .slds-button_icon-bare,.THIS .slds-pill .slds-button--icon-bare{
+    color:rgb(194, 57, 52) !important;
+}
+.THIS .searchResultBox .slds-checkbox_faux,.THIS .searchResultBox .slds-checkbox--faux{
+    border: 0px;
+	background: linear-gradient(#000,#000), linear-gradient(#000,#000);
+    background-position: center;
+    background-size: 50% 2px,2px 50%;
+    background-repeat: no-repeat;
+}
+.THIS .importButton{
+    padding-top: 1.5em !important;
+}
+.THIS .addText{
+    display:none;
+}
+.THIS .btn-selectall-qli{
+    border: 1px !important;
+}
+.THIS .btn-selectall-qli:hover{
+    border: 1px solid !important;
+}
+.THIS .btn-addqli{
+    border: 1px !important;
+}
+.THIS .btn-addqli:hover{
+    border: 1px solid !important;
+}
+.THIS .btn-clearpill:hover{
+	border: 1px solid !important;
+}
+.THIS .ps-search-checkboxbutton:hover{
+    background: rgb(244, 246, 249) !important;
+}

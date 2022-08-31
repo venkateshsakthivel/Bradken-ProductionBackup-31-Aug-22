@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Site_Visit__c</fullName>
+    <externalId>false</externalId>
+    <label>Site Visit Mode</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>On Site</fullName>
+                <default>false</default>
+                <label>On Site</label>
+            </value>
+            <value>
+                <fullName>Virtual</fullName>
+                <default>false</default>
+                <label>Virtual</label>
+            </value>
+            <value>
+                <fullName>Head Office</fullName>
+                <default>false</default>
+                <label>Head Office</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

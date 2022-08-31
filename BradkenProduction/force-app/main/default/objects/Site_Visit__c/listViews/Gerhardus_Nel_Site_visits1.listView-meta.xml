@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gerhardus_Nel_Site_visits1</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Site_name__c</columns>
+    <columns>Site_Visit_Date__c</columns>
+    <columns>Work_Request_Required__c</columns>
+    <columns>Site_Visit_Primary_Purpose__c</columns>
+    <columns>Next_Steps__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>Gerhardus Nel Site visits</label>
+</ListView>

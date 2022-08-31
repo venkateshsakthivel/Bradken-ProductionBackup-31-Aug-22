@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bill_s_Site_Visits</fullName>
+    <columns>Site_Visit__c</columns>
+    <columns>Site_Visit_Date__c</columns>
+    <columns>Account__c</columns>
+    <columns>Site_name__c</columns>
+    <columns>Site_Visit_Primary_Purpose__c</columns>
+    <columns>Comments__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sales_Rep__c</field>
+        <operation>equals</operation>
+        <value>Bill Duffy</value>
+    </filters>
+    <label>Bill&apos;s Site Visits</label>
+</ListView>

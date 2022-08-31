@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>CSV_Apex_Error_Invalid_Columns</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Apex_Error_Invalid_Columns</shortDescription>
+        <value>Invalid Columns</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Apex_Error_Missing_Columns</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Apex_Error_Missing_Columns</shortDescription>
+        <value>Missing columns</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Apex_Error_Post_message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Apex_Error_Post_message</shortDescription>
+        <value>QuoteLineItem records failed to save out of</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Apex_Error_ProductNotFoundOnPricebook</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Apex_Error_ProductNotFoundOnPricebook</shortDescription>
+        <value>Salesforce Product not found on Price book</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Delete_Exisiting_Records_Warning_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Delete_Exisiting_Records_Warning_Message</shortDescription>
+        <value>Warning: The existing quote line items in this quote and will be deleted with this import.</value>
+    </labels>
+    <labels>
+        <fullName>CSV_DownloadFailRecordsButton</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_DownloadFailRecordsButton</shortDescription>
+        <value>Download Failed Records</value>
+    </labels>
+    <labels>
+        <fullName>CSV_DownloadFileName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_DownloadFileName</shortDescription>
+        <value>FailedRecords_</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Error_Apex_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Error_Apex_Message</shortDescription>
+        <value>Internal Error, Check apex logs</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Error_FileEmpty</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Error_FileEmpty</shortDescription>
+        <value>No File Uploaded</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Error_Header</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_Error_Header</shortDescription>
+        <value>Something has gone wrong!</value>
+    </labels>
+    <labels>
+        <fullName>CSV_FileLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_FileLabel</shortDescription>
+        <value>Upload File</value>
+    </labels>
+    <labels>
+        <fullName>CSV_FileSizeExceededError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_FileSizeExceededError</shortDescription>
+        <value>File Size Exceeded</value>
+    </labels>
+    <labels>
+        <fullName>CSV_ImportButtonLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_ImportButtonLabel</shortDescription>
+        <value>Import</value>
+    </labels>
+    <labels>
+        <fullName>CSV_NumberOfRowsText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_NumberOfRowsText</shortDescription>
+        <value>Number of records identified to import</value>
+    </labels>
+    <labels>
+        <fullName>CSV_UploadFailMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_UploadFailMessage</shortDescription>
+        <value>QuoteLineItems have data errors, Please correct and reupload</value>
+    </labels>
+    <labels>
+        <fullName>CSV_UploadLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_UploadLabel</shortDescription>
+        <value>Upload</value>
+    </labels>
+    <labels>
+        <fullName>CSV_UploadSuccessMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV_UploadSuccessMessage</shortDescription>
+        <value>Successfully uploaded!</value>
+    </labels>
+    <labels>
+        <fullName>Flow_warning_for_both_full_and_partial_OLI_s_selectedc</fullName>
+        <categories>Flow</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Flow warning for both full and partial OLI&apos;s selected</shortDescription>
+        <value>Both All and Partial OLI&apos;s options selected in previous screen. To correct, please go back to previous screen or click next to continue with All OLI&apos;s?</value>
+    </labels>
+    <labels>
+        <fullName>Flow_warning_for_no_OLI_s_selected</fullName>
+        <categories>Flow</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Flow warning for no OLI&apos;s selected</shortDescription>
+        <value>To select, please Go back to previous screen or click finish to terminate the flow.</value>
+    </labels>
+    <labels>
+        <fullName>PO_Cancel_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Cancel_Button</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>PO_Cancel_Confirm_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Cancel_Confirm_Button</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>PO_Col_Available</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Col_Available</shortDescription>
+        <value>Available Quantity</value>
+    </labels>
+    <labels>
+        <fullName>PO_Col_DespatchWarehouse</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Col_DespatchWarehouse</shortDescription>
+        <value>Despatch Warehouse</value>
+    </labels>
+    <labels>
+        <fullName>PO_Col_LineItemNumber</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Col_LineItemNumber</shortDescription>
+        <value>Line Item #</value>
+    </labels>
+    <labels>
+        <fullName>PO_Col_OrderQuantity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Col_OrderQuantity</shortDescription>
+        <value>Order Quantity</value>
+    </labels>
+    <labels>
+        <fullName>PO_Col_ProductName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Col_ProductName</shortDescription>
+        <value>Bradken Product Number</value>
+    </labels>
+    <labels>
+        <fullName>PO_Col_Quantity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Col_Quantity</shortDescription>
+        <value>Total Quantity</value>
+    </labels>
+    <labels>
+        <fullName>PO_Confirm_Header</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Confirm_Header</shortDescription>
+        <value>Draft Sales Order Confirmation</value>
+    </labels>
+    <labels>
+        <fullName>PO_Confirm_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Confirm_Message</shortDescription>
+        <value>This will send a Draft Sales Order to Unibis. Are you sure you want to continue?</value>
+    </labels>
+    <labels>
+        <fullName>PO_Error_Insert</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Error_Insert</shortDescription>
+        <value>Insert Error</value>
+    </labels>
+    <labels>
+        <fullName>PO_Error_OppLine</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Error_OppLine</shortDescription>
+        <value>Error getting opportunity lines</value>
+    </labels>
+    <labels>
+        <fullName>PO_Error_RequiredField</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Error_RequiredField</shortDescription>
+        <value>One or more required fields are missing</value>
+    </labels>
+    <labels>
+        <fullName>PO_No_OpportunityLines_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_No_OpportunityLines_Message</shortDescription>
+        <value>No Products available on the Opportunity to order</value>
+    </labels>
+    <labels>
+        <fullName>PO_No_UNIBIS_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Create PO Unibis Account missing message</shortDescription>
+        <value>Customer does not exist in Unibis.</value>
+    </labels>
+    <labels>
+        <fullName>PO_Quantity_Exceeded_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Quantity_Exceeded_Message</shortDescription>
+        <value>Product Quantities are updated, Please refresh the page.</value>
+    </labels>
+    <labels>
+        <fullName>PO_Save_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Save_Button</shortDescription>
+        <value>Send to Unibis</value>
+    </labels>
+    <labels>
+        <fullName>PO_Save_Confirm_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Save_Confirm_Button</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>PO_Saved</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Saved</shortDescription>
+        <value>Purchase Order created successfully</value>
+    </labels>
+    <labels>
+        <fullName>PO_Tab_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PO_Tab_Label</shortDescription>
+        <value>Add Purchase Order</value>
+    </labels>
+    <labels>
+        <fullName>QLE_Editable_Status</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QLE Add Product Status</shortDescription>
+        <value>New,Value Proposition, Estimating,Working Proposal,</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Add_Products_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Add_Products_Button</shortDescription>
+        <value>Add Products</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Cancel_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Cancel_Button</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Error_Validation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Error_Validation</shortDescription>
+        <value>There are errors in records</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_ExitEditor_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_ExitEditor_Message</shortDescription>
+        <value>Unsaved changes will be discarded. Are you sure you want to continue?</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_ExitEditor_No</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_ExitEditor_No</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_ExitEditor_Yes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_ExitEditor_Yes</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_FieldsToDisplay_Apply_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_FieldsToDisplay_Apply_Button</shortDescription>
+        <value>Apply</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_FieldsToDisplay_Available</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_FieldsToDisplay_Available</shortDescription>
+        <value>Available</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_FieldsToDisplay_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_FieldsToDisplay_Button</shortDescription>
+        <value>Show More Fields</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_FieldsToDisplay_Close_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_FieldsToDisplay_Close_Button</shortDescription>
+        <value>Close</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_FieldsToDisplay_SelectAll_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_FieldsToDisplay_SelectAll_Button</shortDescription>
+        <value>Select All</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_FieldsToDisplay_Selected</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_FieldsToDisplay_Selected</shortDescription>
+        <value>Selected</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Header_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Header_Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Header_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Header_Success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Header_Warning</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Header_Warning</shortDescription>
+        <value>Warning</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_PricebookChanged_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_PricebookChanged_Message</shortDescription>
+        <value>You have changed price book for this quote. This action permanently deletes all products (if any) from the quote. Continue?</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_PricebookChanged_No_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_PricebookChanged_No_Button</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_PricebookChanged_Yes_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_PricebookChanged_Yes_Button</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Product_Search_HelpText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Product_Search_HelpText</shortDescription>
+        <value>Search by Product Code / Description</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_QuoteLineItem</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_QuoteLineItem</shortDescription>
+        <value>Quote Line Items</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_RecalculateCosts_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_RecalculateCosts_Button</shortDescription>
+        <value>Update Costs</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_RecalculateCosts_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_RecalculateCosts_Message</shortDescription>
+        <value>Warning! Refreshing all line items will recalculate product and freight costs based on Supplier and Despatch Warehouse selected on each line.</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Remove_Products_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Remove_Products_Button</shortDescription>
+        <value>Clear selection</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Save_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Save_Button</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Save_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Save_Message</shortDescription>
+        <value>Records saved successfully</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Search_Product_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Search_Product_Label</shortDescription>
+        <value>Search Products</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Search_Result_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Search_Result_Label</shortDescription>
+        <value>Found Products</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_SelectAll_Product_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_SelectAll_Product_Button</shortDescription>
+        <value>Select All</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_Select_Pricebook_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_Select_Pricebook_Label</shortDescription>
+        <value>Select Pricebook</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_UpdateWarehouse_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_UpdateWarehouse_Button</shortDescription>
+        <value>Update W/H’s &amp; Costs</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineEditor_UpdateWarehouse_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineEditor_UpdateWarehouse_Message</shortDescription>
+        <value>This will overwrite Supplier / Despatch Warehouse and recalculates product and freight costs based on each line.</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_DeleteBtn</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_DeleteBtn</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_DeleteRowMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Message on delete of a quote line</shortDescription>
+        <value>This action will remove the row</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_LastSoldDate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_LastSoldDate</shortDescription>
+        <value>Last Sold Date</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_LastSoldGMpc</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_LastSoldGMpc</shortDescription>
+        <value>Last Sold GM %</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_LastSoldPrice</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_LastSoldPrice</shortDescription>
+        <value>Last Sold Price</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_MarginAmt</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_MarginAmt</shortDescription>
+        <value>Total Margin $</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_MarginPc</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_MarginPc</shortDescription>
+        <value>Total Margin %</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_ProductName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_ProductName</shortDescription>
+        <value>Product Name</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_RefreshQuoteLineMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Message on qli row popup</shortDescription>
+        <value>Warning! This will recalculate product and freight costs based on Supplier and Despatch Warehouse</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_TotalPrice</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_TotalPrice</shortDescription>
+        <value>Total Price</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_TotalUnitGM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_TotalUnitGM</shortDescription>
+        <value>Total Unit GM %</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_TotalUnitMargin</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_TotalUnitMargin</shortDescription>
+        <value>Total Unit Margin $</value>
+    </labels>
+    <labels>
+        <fullName>QuoteLineRow_Table_TotalUnitSellPrice</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteLineRow_Table_TotalUnitSellPrice</shortDescription>
+        <value>Total Unit Sell Price</value>
+    </labels>
+    <labels>
+        <fullName>RecordType_Quote_Approved_Customer_Quote</fullName>
+        <categories>Record Type Ids</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record Type - Quote - Approved Customer Quote</shortDescription>
+        <value>0120o000001lTHYAA2</value>
+    </labels>
+    <labels>
+        <fullName>RecordType_Quote_Budget</fullName>
+        <categories>Record Type Ids</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record Type - Quote - Budget</shortDescription>
+        <value>0120o000001lTHZAA2</value>
+    </labels>
+    <labels>
+        <fullName>RecordType_Quote_Customer</fullName>
+        <categories>Record Type Ids</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record Type - Quote - Customer</shortDescription>
+        <value>0120o000001lTHaAAM</value>
+    </labels>
+    <labels>
+        <fullName>Report_Quote_Excel_Export</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Report Quote Excel Export</shortDescription>
+        <value>00O0o00000CdJiREAV</value>
+    </labels>
+    <labels>
+        <fullName>ers_CancelButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>ers_ClearFilterAction</fullName>
+        <categories>actions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Clear Filter</shortDescription>
+        <value>Clear Filter</value>
+    </labels>
+    <labels>
+        <fullName>ers_ClearSelectionButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Clear Selection</shortDescription>
+        <value>Clear Selection</value>
+    </labels>
+    <labels>
+        <fullName>ers_ColumnHeader</fullName>
+        <categories>headers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Column</shortDescription>
+        <value>Column</value>
+    </labels>
+    <labels>
+        <fullName>ers_FilterHeader</fullName>
+        <categories>headers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Filter</shortDescription>
+        <value>Filter</value>
+    </labels>
+    <labels>
+        <fullName>ers_LabelHeader</fullName>
+        <categories>headers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label</shortDescription>
+        <value>Label</value>
+    </labels>
+    <labels>
+        <fullName>ers_SaveButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>ers_SetFilterAction</fullName>
+        <categories>actions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Set Filter</shortDescription>
+        <value>Set Filter</value>
+    </labels>
+    <labels>
+        <fullName>fsc_AccessLevel</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccessLevel</shortDescription>
+        <value>Access Level</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Back</fullName>
+        <categories>Buttons,Filters,Title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Back</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ButtonIsNotSupportedMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ButtonIsNotSupportedMessage</shortDescription>
+        <value>Following buttons are note supported:</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ConditionLogicHelpText</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ConditionLogicHelpText</shortDescription>
+        <value>Use parentheses, AND, OR, and NOT to customize the logic. For example, if you enter “(1 AND 2 AND 3) OR 4”, the flow evaluates whether the first three conditions are true or only the fourth condition is true.</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Delete</fullName>
+        <categories>labels, buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Delete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>fsc_FieldIsNotSupportedMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FieldIsNotSupportedMessage</shortDescription>
+        <value>Following fields are not supported:</value>
+    </labels>
+    <labels>
+        <fullName>fsc_FieldTypeNotSuportedMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>fsc_FieldTypeNotSuportedMessage</shortDescription>
+        <value>You provided an unsupported value for the DataTypeFilter input on Object and Field Picker. Currently the only supported value is ’picklist’</value>
+    </labels>
+    <labels>
+        <fullName>fsc_For</fullName>
+        <categories>Buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>For</shortDescription>
+        <value>For</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Key_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Key Label</shortDescription>
+        <value>Key</value>
+    </labels>
+    <labels>
+        <fullName>fsc_LackingPermissions</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LackingPermissions</shortDescription>
+        <value>You don\&apos;t have the proper permissions for ths action</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ManagerEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ManagerEmptyMessage</shortDescription>
+        <value>&quot;Manager APEX Class&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_MultipleGroupsForRole</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MultipleGroupsForRole</shortDescription>
+        <value>There are multiple groups for that role</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Name</fullName>
+        <categories>quicklinks, Labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>fsc_NonePicklistValueLabel</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NonePicklistValueLabel</shortDescription>
+        <value>-- None --</value>
+    </labels>
+    <labels>
+        <fullName>fsc_OWDReadWrite</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OWDReadWrite</shortDescription>
+        <value>Sharing Settings must be private or public read/write to enable manual sharing</value>
+    </labels>
+    <labels>
+        <fullName>fsc_OwnerAdminModify</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OwnerAdminModify</shortDescription>
+        <value>Only the record owner or administrators can modify permissions</value>
+    </labels>
+    <labels>
+        <fullName>fsc_PublicGroups</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PublicGroups</shortDescription>
+        <value>Public Groups</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Queues</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Queues</shortDescription>
+        <value>Queues</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Read</fullName>
+        <categories>labels, buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Read</shortDescription>
+        <value>Read</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ReadWrite</fullName>
+        <categories>labels, buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReadWrite</shortDescription>
+        <value>Read / Write</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Reason</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reason</shortDescription>
+        <value>Reason</value>
+    </labels>
+    <labels>
+        <fullName>fsc_RelatedUsers</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RelatedUsers</shortDescription>
+        <value>Related Users</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Roles</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Roles</shortDescription>
+        <value>Roles</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Search</fullName>
+        <categories>Actions,Buttons,quicklinks</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search in</shortDescription>
+        <value>Search in</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SearchFor</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SearchFor</shortDescription>
+        <value>For</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SetAccessLevel</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SetAccessLevel</shortDescription>
+        <value>Set Access Level</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SupportedAddCapabilitiesEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SupportedAddCapabilitiesEmptyMessage</shortDescription>
+        <value>&quot;Add Capabilities&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SupportedButtonsEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SupportedButtonsEmptyMessage</shortDescription>
+        <value>&quot;Supported Buttons&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SupportedEditCapabilitiesEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SupportedEditCapabilitiesEmptyMessage</shortDescription>
+        <value>&quot;Edit Capabilities&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_TooManyResultsMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TooManyResultsMessage</shortDescription>
+        <value>Your search found more than 200 results.  Keep typing to make it more specific</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Type</fullName>
+        <categories>Buttons,Filters,Title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Type</shortDescription>
+        <value>Type</value>
+    </labels>
+    <labels>
+        <fullName>fsc_UserOrGroup</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UserOrGroup</shortDescription>
+        <value>User Or Group</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Users</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Users</shortDescription>
+        <value>Users</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Value_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Value Label</shortDescription>
+        <value>Value</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Report for specific quip template</description>
+    <label>Quip Template Metrics</label>
+    <sections>
+        <masterLabel>Collaboration Template Metrics</masterLabel>
+    </sections>
+</ReportType>

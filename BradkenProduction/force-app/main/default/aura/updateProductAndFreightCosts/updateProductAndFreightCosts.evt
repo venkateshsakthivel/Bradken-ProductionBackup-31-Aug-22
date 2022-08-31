@@ -1,0 +1,7 @@
+<aura:event type="APPLICATION" description="Event template">
+
+    
+    <aura:attribute name="productCost" type="String"/>
+    <aura:attribute name="freightCost" type="String"/>
+
+</aura:event>

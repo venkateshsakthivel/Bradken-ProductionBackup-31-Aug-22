@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Will_B_open_invoices</fullName>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Debtors_Bucket_Label_2__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Will B open invoices</label>
+</ListView>

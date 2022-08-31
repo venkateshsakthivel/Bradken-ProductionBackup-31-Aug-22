@@ -1,0 +1,590 @@
+<!-- QuoteLineRow -->
+<aura:component  controller="QuoteLineEditorController">
+    <!-- Attibutes -->
+    
+    <aura:attribute name="marginPct" type="Decimal"/>
+    <aura:attribute name="quantity" type="Decimal"/>
+    <aura:attribute name="unitProductGMPercent" type="Decimal" /> 
+    <aura:attribute name="forecastedUnitProductCost" type="Decimal"/>
+    <aura:attribute name="linePatternAndToolingSell" type="Decimal"/>
+    <aura:attribute name="otherSell" type="Decimal"/>
+    <aura:attribute name="unitCostPrice" type="Decimal"/>
+    <aura:attribute name="unitSellPrice" type="Decimal"/>
+    <aura:attribute name="totalMarginAmt" type="Decimal"/>
+    <aura:attribute name="unitFreightSell" type="Decimal"/>
+    <aura:attribute name="quoteline" type="Object" default="{}"/>
+    <aura:attribute name="selectedColumns" type="List" default="[]"/>
+    <aura:attribute name="quotelinefields" type="List" default="[]"/>
+    <aura:attribute name="quoteLineFieldDescribe" type="List" default="[]"/>
+    <aura:attribute name="index" type="Integer" default="0"/>
+    <aura:attribute name="quoteLineEditorConfig" type="List" default="[]"/>
+    <aura:attribute name="quoteLineItemsObject" type="QuoteLineItem" default="{'sobjectType':'QuoteLineItem'}"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="isConfirmModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="modalAction" type="String" default=""/>
+    
+    <!--modal attributes-->
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="modalProductCost" type="Decimal" default=""/>
+    <aura:attribute name="modalFreightCost" type="Decimal" default=""/>
+    <aura:attribute name="modalUnitPriceCost" type="Decimal" default=""/>
+    <aura:attribute name="ProductAndFreightTotalCost" type="Decimal" default=""/>
+    <aura:attribute name="modalTotalGrossMarginPercentage" type="Decimal" default=""/>
+    <!--<aura:attribute name="modalOutboundFreightCost" type="Decimal" default=""/>
+	<aura:attribute name="modalOutboundFreightSell" type="Decimal" default=""/>
+    <aura:attribute name="modalPatternToolingCost" type="Decimal" default=""/>
+    <aura:attribute name="modalPatternToolingSell" type="Decimal" default=""/>-->
+    <aura:attribute name="modalLastUpdatedDate" type="Date" default=""/>
+    <aura:attribute name="isButtonActive" type = "boolean" default = "true"/>
+  
+    
+    <!-- Actions -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.quoteLineEditorConfig}" action="{!c.handleChangedColumns}" />
+    <aura:handler name="change" value="{!v.quoteTotal}" action="{!c.quoteTotalChange}" />
+    <aura:method name="quoteLineRow" action="{!c.doAction}" >
+        <aura:attribute name="action" type="String"/>
+		<aura:attribute name="payload" type="String"/>
+    </aura:method>
+    <aura:method name="updateModal" action="{!c.updateModalAttributes}"></aura:method>
+    <aura:registerEvent name="QuoteLineEditorEvent" type="c:QuoteLineEditorEvent"/>
+    
+    <aura:method name="updateProductAndFreightCosts" action="{!c.updateProductAndFreightCosts}">
+ 		<aura:attribute name="productCost" type="String"/>
+ 		<aura:attribute name="freightCost" type="String"/>
+        <aura:attribute name="freightOutboundCost" type="String"/>
+        <aura:attribute name="freightOutboundSell" type="String"/>
+        <aura:attribute name="patternToolingCost" type="String"/>
+        <aura:attribute name="patternToolingSell" type="String"/>
+        <aura:attribute name="lastUpdatedDate" type="Date"/>
+        <aura:attribute name="productCostRate" type="String"/>
+        <aura:attribute name="freightCostRate" type="String"/>
+ 	</aura:method>
+    
+    
+    
+     
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+    <!-- markup -->
+    <tr class="slds-hint-parent">
+     
+        <!-- Action -->
+        <th class="stickyRow">
+			<div class="slds-truncate" >
+				<lightning:buttonIcon iconClass="{!if(and(v.quoteline.Product_Cost__c == 0 , v.quoteline.Freight_Cost__c != 0),'showInfoIcon','')}"
+                                      iconName="utility:info" 
+                                      variant="bare" 
+                                      onclick="{!c.handleopenProductandFreightCostModal}" 
+                                      alternativeText="INFO: product and freight cost"/>
+            </div>
+            <div class="slds-truncate" >
+                <lightning:buttonIcon iconName="utility:refresh" 
+                                      variant="bare" 
+                                      onclick="{!c.showRecalculateModal}" 
+                                      alternativeText="Update line cost"/>
+            </div>
+            <div class="slds-truncate">
+                <lightning:buttonIcon class="deleteIcon" 
+                                      iconName="utility:delete" 
+                                      variant="bare"  
+                                      onclick="{!c.showDeleteModal}" 
+                                      alternativeText="{!$Label.c.QuoteLineRow_Table_DeleteBtn}" />
+            </div>
+            <!--Dummy UI start
+            
+            <div class="slds-truncate">
+                <lightning:buttonIcon iconName="utility:full_width_view"
+                                        variant="bare"
+                                        onclick="{!c.showNewUIDummyModal}" 
+                                        alternativeText="Full View" />
+            </div>
+            Dummy UI end-->
+        </th >
+        <!-- Product Name -->
+        <th class="stickyRow">
+            <div class="slds-truncate" title="{!$Label.c.QuoteLineRow_Table_ProductName}">
+                <div class="qli-product-name">
+                    <b> 
+						<aura:if isTrue="{!v.quoteline.PricebookEntryIdValues.Product2.Name}">
+                            {!v.quoteline.PricebookEntryIdValues.Product2.Name} 
+                            
+                            <aura:set attribute="else">
+                              <aura:if isTrue="{!v.quoteline.Bradken_Part_Number__c == v.quoteline.Product2.Name}">
+                              		{!v.quoteline.Bradken_Part_Number__c}
+                                      <aura:set attribute="else">
+                                          {!v.quoteline.Bradken_Part_Number__c} &nbsp;({!v.quoteline.Product2.Name})
+                                      </aura:set>
+                              </aura:if>
+                            </aura:set>
+                            
+                        </aura:if>
+                               
+                        <!--aura:if isTrue="{!v.quoteline.Id}">
+                            &nbsp;{!v.quoteline.Product2.Name} 
+                        </aura:if-->
+                    </b>
+                </div>
+                <div class="qli-product-name-props">
+                    <table>
+                        <tr>
+                            <td>{!$Label.c.QuoteLineRow_Table_TotalPrice}</td>
+                            <td class="td-col">:</td>
+                            <td>
+                                <lightning:formattedNumber value="{!v.quoteline.Line_Item_Sell_Price__c}" style="decimal" maximumFractionDigits="2"/>
+                            </td>
+                            <td>{!$Label.c.QuoteLineRow_Table_TotalUnitSellPrice}</td>
+                            <td class="td-col">:</td>
+                            <td><lightning:formattedNumber value="{!v.quoteline.TotalUnitSellPrice__c}" style="decimal" maximumFractionDigits="2"/></td>
+                            <td class="orderItem">{!$Label.c.QuoteLineRow_Table_LastSoldPrice}</td>
+                            <td class="td-col">:</td>
+                            <td>
+                                <aura:if isTrue="{!v.quoteline.OrderItem}">
+                                    <lightning:formattedNumber value="{!v.quoteline.OrderItem.UnitPrice}" style="decimal" maximumFractionDigits="2"/>
+                                    <aura:set attribute="else">
+                                        n/a
+                                    </aura:set>
+                                </aura:if>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>{!$Label.c.QuoteLineRow_Table_MarginAmt}</td>
+                            <td class="td-col">:</td>
+                            <td>
+                                <lightning:formattedNumber value="{!v.quoteline.Total_Margin_Amount__c}" style="decimal" maximumFractionDigits="2"/>
+                            </td>
+                            <td>{!$Label.c.QuoteLineRow_Table_TotalUnitMargin}</td>
+                            <td class="td-col">:</td>
+							<td><lightning:formattedNumber value="{!v.quoteline.Margin_Amount__c}" style="decimal" maximumFractionDigits="2"/></td>
+                            <td class="orderItem">{!$Label.c.QuoteLineRow_Table_LastSoldDate}</td>
+                            <td class="td-col">:</td>
+                            <td>
+                                <aura:if isTrue="{!v.quoteline.OrderItem}">
+                                    <ui:outputDate value="{!v.quoteline.OrderItem.Invoiced_Date__c}"/>
+                                     <aura:set attribute="else">
+                                        n/a
+                                    </aura:set>
+                                </aura:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{!$Label.c.QuoteLineRow_Table_MarginPc}</td>
+                            <td class="td-col">:</td>
+                            <td><lightning:formattedNumber value="{!v.quoteline.Total_Margin_Percent__c}" style="percent" maximumFractionDigits="1"/></td>
+                            <td>{!$Label.c.QuoteLineRow_Table_TotalUnitGM}</td>
+                            <td class="td-col">:</td>
+                            <td><lightning:formattedNumber value="{!v.quoteline.Margin_Percent__c}" style="percent" maximumFractionDigits="1"/></td>
+                            <td class="orderItem">{!$Label.c.QuoteLineRow_Table_LastSoldGMpc}</td>
+                            <td class="td-col">:</td>
+                            <td>
+                                <aura:if isTrue="{!v.quoteline.OrderItem}">
+                                    <lightning:formattedNumber value="{!v.quoteline.OrderItem.Gross_Margin__c}" style="decimal" maximumFractionDigits="2"/>
+                                    <aura:set attribute="else">
+                                        n/a
+                                    </aura:set>
+                                </aura:if>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </th>
+        
+        <aura:iteration items="{!v.quotelinefields}" var="qf" >
+            <!--aura:if isTrue="{!and(qf.config.Display__c != 'Hidden' ,qf.config.DefaultChecked__c)}"-->
+                <td class="{!if(and(qf.config.Display__c != 'Hidden' ,qf.config.DefaultChecked__c),'','slds-hide')}">
+                    <div class="slds-truncate doRightPad" 
+                         data-field-name="{!qf.config.MasterLabel}"
+						 data-showerror="{!if(and(qf.api == 'Unit_Cost_Price__c',v.quoteline.Product_Cost__c == 0 , v.quoteline.Freight_Cost__c != 0),'yes','no')}">
+                        <aura:if isTrue="{!qf.props.updateable}">
+                            <aura:if isTrue="{!qf.config.DataType__c == 'textarea'}">
+                                <lightning:textarea aura:id="qliinputs"
+                                                    class="colTextArea"
+                                                    name="{!qf.api}"
+                                                    value="{!qf.value}"
+                                                    placeholder="{!qf.props.label}" 
+                                                    label="{!qf.props.label}" 
+                                                    variant="label-hidden"
+                                                    maxlength="{!qf.props.length}" 
+                                                    required="{!qf.config.Display__c == 'Required'}"
+                                                    messageWhenTooLong="{! 'A maximum of '+qf.props.length+'characters are allowed'}" 
+                                                    disabled = "{!qf.readonly}"
+                                                    />
+                                
+                            </aura:if>
+                            
+                             <!--//:FC:AK:16-05-22:Commenting below for testing. Un Commenting -->
+							
+                            <aura:if isTrue="{!qf.config.MasterLabel =='IsProductInactive'}">
+                                <!-- <lightning:helptext content="{!qf.props.helpText__c}"/> -->
+                                <lightning:input aura:id="qliinputa" 
+                                                 label="{!qf.props.label}" 
+                                                 name="{!qf.api}"
+                                                 variant="label-hidden"
+                                                 type="checkbox"
+                                                 step="0.01"
+                                                 min="0"
+                                                 disabled = "{!qf.readonly}"
+                                                 checked = "{!qf.value}"
+                                                 class="{!join(
+                                                              if(qf.config.Display__c == 'Required','required-input ',' '),
+                                                              'slds-m-around_xx-small ',
+                                                              'colNumber ',
+                                                              if(qf.props.type == 'currency',' colCurrency',' ')
+                                                              )}"/>
+                            </aura:if>
+							
+
+                            <aura:if isTrue="{!and(and(qf.config.DataType__c != 'textarea', qf.config.MasterLabel !='Despatch Warehouse'),qf.config.MasterLabel !='IsProductInactive')}">
+                                <!--<lightning:helptext content="{!qf.props.helpText__c}"/>-->
+                                <lightning:input aura:id="qliinputs" 
+                                                 onchange="{!c.handleDataChange}" 
+                                                 value="{!qf.value}"
+                                                 label="{!qf.props.label}" 
+                                                 name="{!qf.api}"
+                                                 required="{!qf.config.Display__c == 'Required'}"
+                                                 variant="label-hidden"
+                                                 type="{!if(qf.props.type == 'currency',
+                                                             'number',
+                                                             if(qf.props.type == 'boolean','checkbox',qf.props.type)
+                                                            )}"
+                                                 step="0.01"
+                                                 min="0"
+                                                 disabled = "{!qf.readonly}"
+                                                 class="{!join(
+                                                              if(qf.config.Display__c == 'Required','required-input ',' '),
+                                                              'slds-m-around_xx-small ',
+                                                              'colNumber ',
+                                                              if(qf.props.type == 'currency',' colCurrency',' ')
+                                                              )}"/>
+                            </aura:if>
+                            <aura:if isTrue="{!qf.config.MasterLabel == 'Despatch Warehouse'}">
+                                <lightning:recordEditForm aura:id="recordEditForm" objectApiName="QuoteLineItem">
+                                    <!--<lightning:helptext content="{!qf.props.helpText__c}"/>-->
+                                    <lightning:inputField aura:id="warehouseLookup" 
+                                                          label="" 
+                                                          class="disableInlineHelp"
+                                                          fieldName="Despatch_Warehouse__c" 
+                                                          value="{!v.quoteline.Despatch_Warehouse__c}"/>
+                                </lightning:recordEditForm>
+                            </aura:if>
+                        </aura:if>
+                        <aura:if isTrue="{!!qf.props.updateable}">
+                            {!qf.value}
+                        </aura:if>
+                    </div>
+                </td>
+        </aura:iteration>
+    </tr>
+    <!--Dummy UI start
+    <aura:if isTrue="{!v.ifShowNewUIDummyModal}">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open slds-modal_large" >
+            <div class="slds-modal__container">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                
+                <span class="slds-assistive-text">Cancel and close</span>
+              </button>
+                <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">New UI for Product And Freight</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless" id="modal-content-id-1">
+                  <lightning:layout>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Unit Product Cost" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Forecasted Cost increase %" disabled="true" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Forecasted Unit Prod Cost" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Target Unit GM%" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Unit Product Sell" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Unit Product GM%" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                  </lightning:layout>
+                  <lightning:layout>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Unit Frieght Cost" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Markup" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Unit Frieght Sell" fieldLevelHelp="Unit Frieght Sell" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      </lightning:layout>
+                  <lightning:layout>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Line Pattern, Tooling Cost" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Markup" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Line Pattern, Tooling Sell" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                  </lightning:layout>
+                  <lightning:layout>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Other Cost" fieldLevelHelp="Other (Duties and Tariffs) Cost" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Markup" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Other Sell" fieldLevelHelp="Other (Duties and Tariffs) Sell" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                  </lightning:layout>
+                  
+                  <lightning:layout>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Total Unit Cost" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Total Unit Sell" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                      <lightning:layoutItem padding="horizontal-small" class="slds-size_2-of-12">
+                          <lightning:input type="number" name="ForecastedCostIncreasePercentageDummy" label="Total Unit GM%" disabled="false" value="0.0" step="0.01"/>
+                      </lightning:layoutItem>
+                  </lightning:layout>
+              </div>
+              <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick="{!c.closeNewUIDummyModal}">Cancel</button>
+                <button class="slds-button slds-button_brand">Update</button>
+              </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+    Dummy UI end-->
+	<aura:if isTrue="{!v.isModalOpen}">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open slds-modal_large" >
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Quote Pricing</h1>
+                </div>
+        <!--<c:ModalContent>
+            <aura:set attribute="headers">
+                Product and Freight Cost
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{!c.handlecloseProductandFreightCostModal}"/>
+                <lightning:button 	variant="brand"
+                                    label="Update"
+                                    title="Update"
+                                    onclick="{!c.handleUpdateProductandFreightCost}"
+                					aura:id="btnUpdate"
+                                  	disabled = "{!v.isButtonActive}"/>
+            </aura:set>-->
+        
+                <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless" id="modal-content-id-1">
+                    <p>
+                       
+                        <!--<b>-->
+
+                        <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                            <lightning:input type="number" aura:id = "quantity" required="true"  name="Quantity" label="Quantity" disabled="false" value="{!v.quantity}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                        </lightning:layoutItem>
+                        <lightning:layout>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <div data-showerror="{!if(and(v.modalProductCost == 0 , v.modalFreightCost != 0),'yes','no')}">
+                                    <lightning:input type="number" 
+                                                        disabled="false"
+                                                        step="0.01"
+                                                        name="productcost" 
+                                                        fieldLevelHelp="{!'Unit Product Cost - ' + v.quoteline.Product_Cost_Rate__c}"
+                                                        label="Unit Product Cost" 
+                                                        value="{!v.modalProductCost}" 
+                                                        onchange="{!c.handleProductandFreightCostChangeInModal}"
+                                                        aura:id = "productCost"/>
+                                </div>			            
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input  type="number" name="ForecastedCostIncreasePercentage" fieldLevelHelp="Forecasted Cost Increase %" label="Forecast Cost Increase %" disabled="false" value="{! v.quoteline.Forecasted_Cost_Increase_Percentage__c}" step="0.01" onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <lightning:layout> 
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="ForecastedUnitProductCost" fieldLevelHelp="Forecasted Unit Product Cost" label="Forecast Unit Prod Cost" disabled="true" value="{!v.forecastedUnitProductCost}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="TGLM" label="Target Unit GM%" disabled="false" value="{!v.quoteline.Target_Gross_Margin__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="UnitProductSell" label="Unit Product Sell" disabled="false" value="{!v.quoteline.UnitPrice}" onchange="{!c.calculateTotalUnitSellPriceHelperCall}"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" name="UnitProductGMPercent" label="Unit Product GM%" disabled="true" value="{!v.unitProductGMPercent}" step="0.1" formatter="percent-fixed"/>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <lightning:layout>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="UnitFreightCost" fieldLevelHelp="{!'Unit Freight Cost - ' + v.quoteline.Freight_Cost_Rate__c}" label="Unit Freight Cost" disabled="false" value="{!v.modalFreightCost}" onchange="{!c.handleProductandFreightCostChangeInModal}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="UnitFreightMarkup" label="Unit Freight Markup %" disabled="false" value="{!v.quoteline.Unit_Freight_Markup__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="UnitFreightSell" label="Unit Freight Sell" disabled="true" value="{!v.unitFreightSell}" />
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <lightning:layout>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="LinePatternAndToolingCost" fieldLevelHelp="Line Pattern &amp; Tooling Cost" label="Line Pattern Cost" disabled="false" value="{!v.quoteline.Pattern_Cost_Price__c}" onchange="{!c.handleProductandFreightCostChangeInModal}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="LinePatternAndToolingCostMarkup" fieldLevelHelp="Line Pattern &amp; Tooling Markup %" label="Line Pattern Markup %" disabled="false" value="{!v.quoteline.Line_Pattern_Tooling_Markup__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="LinePatternAndToolingSell" fieldLevelHelp="Line Pattern &amp; Tooling Sell" label="Line Pattern Sell" disabled="true" value="{!v.linePatternAndToolingSell}" />
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <lightning:layout>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="OtherDutiesAndTariffsCost" fieldLevelHelp="Other (Duties &amp; Tariffs) Cost" label="Other Cost" disabled="false" value="{!v.quoteline.Other_Duties_Tariffs_Cost__c}"  onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="OtherDutiesAndTariffsMarkup" fieldLevelHelp="Other (Duties &amp; Tariffs) Markup %" label="Other Markup %" disabled="false" value="{!v.quoteline.Other_Duties_Tariffs_Markup__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="OtherDutiesAndTariffsSell" fieldLevelHelp="Other (Duties &amp; Tariffs) Sell" label="Other Sell" disabled="true" value="{!v.otherSell}" />
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <lightning:layout>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="TotalUnitCostPrice" label="Total Unit Cost" disabled="true" value="{!v.unitCostPrice}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.01" name="TotalUnitSellPrice" label="Total Unit Sell" disabled="true" value="{!v.unitSellPrice}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="horizontal-small" class="slds-size_3-of-12">
+                                <lightning:input type="number" step="0.1" name="TotalUnitGMPercentage" label="Total Unit GM %" disabled="true" value="{!v.marginPct}" formatter="percent-fixed" />
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    <!--
+                    <lightning:input type="Decimal" name="freightcost" label="{!'Inbound Freight Cost - ' + v.quoteline.Freight_Cost_Rate__c}" value="{!v.modalFreightCost}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>
+                	-->
+                    <!-- Changes as part of PopulateQLEPopout user story
+					<lightning:input type="Decimal" name="unitcostprice" label="Total Unit Cost" disabled="true" value="{!v.modalUnitPriceCost}"/>
+					-->
+                <!--<aura:if isTrue="{!v.isSystemAdmin}"> //27052022 User Story : RemoveLastUpdatedDate added aura:if
+                	<lightning:input type="date" name="input7" label="Last Updated Date" disabled="true" value="{!v.modalLastUpdatedDate}" />
+                </aura:if> //27052022 User Story : RemoveLastUpdatedDate -->
+                
+                <!----> 
+
+                <!-- value="{! v.quoteline.Forecasted_Cost_Increase_Percentage__c== 'undefined'? v.quoteline.Forecasted_Cost_Increase_Percentage__c : 0.0} -->
+                
+				<!--31052022 PopulateQLEPopout start-->
+                <!--done<lightning:input type="number" name="ForecastedCostIncreasePercentage" label="Forecasted Unit Cost Increase %" disabled="false" value="{! v.quoteline.Forecasted_Cost_Increase_Percentage__c}" step="0.01" onchange="{!c.handleProductandFreightCostChangeInModal}"/>-->
+                <!--done<lightning:input type="number" step="0.01" name="ForecastedUnitProductCost" label="Forecasted Unit Product Cost" disabled="true" value="{!v.forecastedUnitProductCost}" />-->
+                <!-- <lightning:input type="Decimal" name="TGLM" label="Target Unit GM%" disabled="false" value="{!v.modalTotalGrossMarginPercentage}" /> -->
+                <!--done<lightning:input type="number" step="0.01" name="TGLM" label="Target Unit GM%" disabled="false" value="{!v.quoteline.Target_Gross_Margin__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>-->
+				<!--done<lightning:input type="number" step="0.01" name="UnitProductSell" label="Unit Product Sell" disabled="false" value="{!v.quoteline.UnitPrice}" onchange="{!c.calculateTotalUnitSellPriceHelperCall}"/>-->
+				<!-- <lightning:input type="Decimal" name="UnitGMPercentage" label="Unit GM %" disabled="true" value="" /> -->
+				<!--done<lightning:input type="number" step="0.01" name="UnitFreightCost" label="{!'Unit Freight Cost - ' + v.quoteline.Freight_Cost_Rate__c}" disabled="false" value="{!v.modalFreightCost}" onchange="{!c.handleProductandFreightCostChangeInModal}" />-->
+				<!--done<lightning:input type="number" step="0.01" name="UnitFreightMarkup" label="Unit Freight Markup %" disabled="false" value="{!v.quoteline.Unit_Freight_Markup__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>-->
+				<!--done<lightning:input type="number" step="0.01" name="UnitFreightSell" label="Unit Freight Sell" disabled="true" value="{!v.unitFreightSell}" />-->
+				<!--done<lightning:input type="number" step="0.01" name="LinePatternAndToolingCost" label="Line Pattern and Tooling Cost" disabled="false" value="{!v.quoteline.Pattern_Cost_Price__c}" onchange="{!c.handleProductandFreightCostChangeInModal}" />-->
+				<!--done<lightning:input type="number" step="0.01" name="LinePatternAndToolingCostMarkup" label="Line Pattern and Tooling Cost Markup %" disabled="false" value="{!v.quoteline.Line_Pattern_Tooling_Markup__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>-->
+				<!--done<lightning:input type="number" step="0.01" name="LinePatternAndToolingSell" label="Line Pattern and Tooling Sell" disabled="true" value="{!v.linePatternAndToolingSell}" />-->
+				<!--done<lightning:input type="number" step="0.01" name="OtherDutiesAndTariffsCost" label="Other (Duties and Tariffs) Cost" disabled="false" value="{!v.quoteline.Other_Duties_Tariffs_Cost__c}"  onchange="{!c.handleProductandFreightCostChangeInModal}"/>-->
+				<!--done<lightning:input type="number" step="0.01" name="OtherDutiesAndTariffsMarkup" label="Other (Duties and Tariffs) Markup %" disabled="false" value="{!v.quoteline.Other_Duties_Tariffs_Markup__c}" onchange="{!c.handleProductandFreightCostChangeInModal}"/>-->
+				<!--done<lightning:input type="number" step="0.01" name="OtherDutiesAndTariffsSell" label="Other (Duties and Tariffs) Sell" disabled="true" value="{!v.otherSell}" />-->
+				<!--done<lightning:input type="number" step="0.01" name="TotalUnitCostPrice" label="Total Unit Cost" disabled="true" value="{!v.unitCostPrice}" />-->
+				<!--done<lightning:input type="number" step="0.01" name="TotalUnitSellPrice" label="Total Unit Sell" disabled="true" value="{!v.unitSellPrice}" />-->
+				<!--done<lightning:input type="number" step="0.01" name="TotalUnitGMPercentage" label="Total Unit GM %" disabled="true" value="{!v.totalMarginAmt}" formatter="percent" />-->
+                <!-- <lightning:input type="Decimal" name="unitcostprice" label="Total Unit Cost" disabled="true" value="{!v.modalUnitPriceCost}"/> -->
+				<!--31052022 PopulateQLEPopout end-->
+              
+                    
+                <!--<lightning:input type="Decimal" name="outfreightcost" label="Outbound Freight Cost Price" disabled="false" value="{!v.modalOutboundFreightCost}" />
+				<lightning:input type="Decimal" name="outfreightsell" label="Outbound Freight Sell Price" disabled="false" value="{!v.modalOutboundFreightSell}" />
+				<lightning:input type="Decimal" name="patterntoolingcost" label="Pattern &amp; Tooling Cost Price" disabled="false" value="{!v.modalPatternToolingCost}" />
+				<lightning:input type="Decimal" name="patterntoolingcost" label="Pattern &amp; Tooling Sell Price" disabled="false" value="{!v.modalPatternToolingSell}" /> -->
+                    <!--</b>-->
+                </p>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{!c.handlecloseProductandFreightCostModal}"/>
+                    <lightning:button 	variant="brand"
+                                        label="Update"
+                                        title="Update"
+                                        onclick="{!c.handleUpdateProductandFreightCost}"
+                                        aura:id="btnUpdate"
+                                        disabled = "{!v.isButtonActive}"/>
+                </div>
+        <!--</c:ModalContent>-->
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+
+    <aura:if isTrue="{!v.isConfirmModalOpen}">
+        <c:ModalContent>
+            <aura:set attribute="headers">
+                Are you sure?
+            </aura:set>
+            <aura:set attribute="footers">
+                <lightning:button variant="neutral" 
+                                  class="slds-p-horizontal_large"
+                                  label="Cancel" 
+                                  title="Cancel" 
+                                  onclick="{!c.handleNoConfirm}" />
+                <lightning:button variant="{!if(v.modalAction == 'handleDelete','destructive','brand')}" 
+                                  class="slds-p-horizontal_large"
+                                  label="Confirm" 
+                                  title="Confirm" 
+                                  onclick="{!c.handleYesConfirm}" />
+            </aura:set>
+            <aura:if isTrue="{!v.modalAction == 'refreshQuoteLine'}">
+                {!$Label.c.QuoteLineRow_Table_RefreshQuoteLineMessage}
+            </aura:if>
+            <aura:if isTrue="{!v.modalAction == 'handleDelete'}">
+                {!$Label.c.QuoteLineRow_Table_DeleteRowMessage}
+            </aura:if>
+           
+        </c:ModalContent>
+    </aura:if>
+</aura:component>

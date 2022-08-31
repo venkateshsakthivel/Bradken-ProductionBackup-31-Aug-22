@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trevor_McIntyre_Site_Visits</fullName>
+    <columns>Site_Visit_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Opportunity1__c</columns>
+    <columns>Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>contains</operation>
+        <value>Trevor McIntyre</value>
+    </filters>
+    <filters>
+        <field>Site_Visit_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_MONTH</value>
+    </filters>
+    <label>Trevor McIntyre Site Visits</label>
+</ListView>
